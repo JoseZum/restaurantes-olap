@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <!-- Configuración del Metastore -->
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:postgresql://postgres-metastore:5432/metastore</value>
+    </property>
+    
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+    
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hive</value>
+    </property>
+    
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>hive123</value>
+    </property>
+    
+    <property>
+        <name>datanucleus.autoCreateSchema</name>
+        <value>true</value>
+    </property>
+    
+    <property>
+        <name>datanucleus.fixedDatastore</name>
+        <value>false</value>
+    </property>
+    
+    <property>
+        <name>datanucleus.autoCreateTables</name>
+        <value>true</value>
+    </property>
+    
+    <!-- Configuración del warehouse -->
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>hdfs://hdfs-namenode:9000/user/hive/warehouse</value>
+    </property>
+    
+    <property>
+        <name>hive.metastore.uris</name>
+        <value>thrift://localhost:9083</value>
+    </property>
+    
+    <!-- Configuración de HiveServer2 -->
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10000</value>
+    </property>
+    
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>0.0.0.0</value>
+    </property>
+    
+    <property>
+        <name>hive.server2.enable.doAs</name>
+        <value>false</value>
+    </property>
+    
+    <!-- Configuración de seguridad -->
+    <property>
+        <name>hive.metastore.schema.verification</name>
+        <value>false</value>
+    </property>
+    
+    <property>
+        <name>hive.metastore.schema.verification.record.version</name>
+        <value>false</value>
+    </property>
+    
+    <!-- Configuración de logs y temporales -->
+    <property>
+        <name>hive.exec.local.scratchdir</name>
+        <value>/opt/hive/tmp</value>
+    </property>
+    
+    <property>
+        <name>hive.downloaded.resources.dir</name>
+        <value>/opt/hive/tmp/${hive.session.id}_resources</value>
+    </property>
+</configuration>

@@ -1,0 +1,400 @@
+# =============================================================================
+# Apache Superset - Plataforma de visualizacion de datos y BI
+# Compuesto por tres componentes:
+#   1. superset-db (StatefulSet): PostgreSQL 14 para metadatos de Superset
+#   2. superset-redis (Deployment): Redis 7 para cache y colas de tareas
+#   3. superset (Deployment): Servidor web de Superset en puerto 8088
+# Superset se conecta a Hive (Data Warehouse) para generar dashboards
+# y visualizaciones interactivas sobre los datos analiticos.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# PostgreSQL para Superset - Almacena dashboards, datasets, usuarios
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: superset-db
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset-db
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: superset-db
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: 5432
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: superset-db
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset-db
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  serviceName: superset-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: superset-db
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: superset-db
+        app.kubernetes.io/component: visualizacion
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: SUPERSET_DB_PASSWORD
+          ports:
+            - name: postgresql
+              containerPort: 5432
+              protocol: TCP
+          # Verificacion de salud nativa de PostgreSQL
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - superset
+                - -d
+                - superset
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - superset
+                - -d
+                - superset
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: superset-db-data
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata
+  # Plantilla para volumen persistente de la base de datos de Superset
+  volumeClaimTemplates:
+    - metadata:
+        name: superset-db-data
+        labels:
+          app.kubernetes.io/name: superset-db
+          app.kubernetes.io/part-of: restaurantes-olap
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+---
+# -----------------------------------------------------------------------------
+# Redis para Superset - Cache de resultados y broker para Celery
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: superset-redis
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset-redis
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: superset-redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: superset-redis
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset-redis
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: superset-redis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: superset-redis
+        app.kubernetes.io/component: visualizacion
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          # Verificacion de salud usando PING nativo de Redis
+          livenessProbe:
+            exec:
+              command:
+                - redis-cli
+                - ping
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            exec:
+              command:
+                - redis-cli
+                - ping
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+---
+# -----------------------------------------------------------------------------
+# Servicio de Superset - Expone la interfaz web de visualizacion
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: superset
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: superset
+  ports:
+    - name: http
+      port: 8088
+      targetPort: 8088
+      protocol: TCP
+---
+# -----------------------------------------------------------------------------
+# Deployment de Apache Superset
+# Inicializa la BD, crea admin y arranca el servidor web
+# -----------------------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: superset
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: superset
+    app.kubernetes.io/component: visualizacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: superset
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: superset
+        app.kubernetes.io/component: visualizacion
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      # Contenedores de inicializacion: esperar dependencias
+      initContainers:
+        - name: esperar-superset-db
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que PostgreSQL de Superset este disponible..."
+              until nc -z superset-db 5432; do
+                echo "PostgreSQL no disponible, reintentando en 5 segundos..."
+                sleep 5
+              done
+              echo "PostgreSQL disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+        - name: esperar-superset-redis
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que Redis de Superset este disponible..."
+              until nc -z superset-redis 6379; do
+                echo "Redis no disponible, reintentando en 5 segundos..."
+                sleep 5
+              done
+              echo "Redis disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+      containers:
+        - name: superset
+          image: apache/superset:3.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SUPERSET_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: SUPERSET_SECRET_KEY
+            - name: DATABASE_DIALECT
+              value: "postgresql"
+            - name: DATABASE_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_USER
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: SUPERSET_DB_PASSWORD
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_HOST
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_PORT
+            - name: DATABASE_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_DATABASE_DB
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_REDIS_HOST
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SUPERSET_REDIS_PORT
+            - name: SQLALCHEMY_DATABASE_URI
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: SUPERSET_SQLALCHEMY_URI
+          ports:
+            - name: http
+              containerPort: 8088
+              protocol: TCP
+          # Comando de inicio: crear admin, migrar BD, inicializar y arrancar
+          command:
+            - sh
+            - -c
+            - |
+              superset fab create-admin \
+                --username admin \
+                --firstname Admin \
+                --lastname User \
+                --email admin@superset.com \
+                --password admin &&
+              superset db upgrade &&
+              superset init &&
+              superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
+          # Verificacion de salud usando el endpoint nativo de Superset
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8088
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8088
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 5
+          # Sonda de arranque: Superset tarda en inicializar la BD y crear tablas
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8088
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 30
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 2Gi

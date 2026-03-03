@@ -1,0 +1,175 @@
+# =============================================================================
+# Neo4j - Base de datos de grafos para analisis de rutas y recomendaciones
+# Neo4j 5.25.1 con plugins APOC (procedimientos extendidos) y GDS
+# (Graph Data Science) para analisis de grafos avanzado.
+# Se utiliza para:
+#   - Modelar relaciones entre clientes, restaurantes y pedidos
+#   - Calcular rutas de entrega optimas (caminos minimos)
+#   - Generar recomendaciones de co-compras
+# Se despliega como StatefulSet con volumen persistente de 20Gi.
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: neo4j
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/component: grafo
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: neo4j
+  ports:
+    - name: browser
+      port: 7474
+      targetPort: 7474
+      protocol: TCP
+    - name: bolt
+      port: 7687
+      targetPort: 7687
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: neo4j
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/component: grafo
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  serviceName: neo4j
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: neo4j
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: neo4j
+        app.kubernetes.io/component: grafo
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      # Contexto de seguridad a nivel de pod para permisos de volumen
+      securityContext:
+        fsGroup: 7474
+      containers:
+        - name: neo4j
+          image: neo4j:5.25.1
+          imagePullPolicy: IfNotPresent
+          env:
+            # Autenticacion (usuario/contrasena)
+            - name: NEO4J_AUTH
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: NEO4J_AUTH
+            # Configuracion de memoria del heap de la JVM
+            - name: NEO4J_dbms_memory_heap_max__size
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_dbms_memory_heap_max__size
+            # Configuracion de la cache de paginas para rendimiento de consultas
+            - name: NEO4J_dbms_memory_pagecache_size
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_dbms_memory_pagecache_size
+            # Permitir procedimientos de APOC y GDS sin restricciones
+            - name: NEO4J_dbms_security_procedures_unrestricted
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_dbms_security_procedures_unrestricted
+            - name: NEO4J_dbms_security_procedures_allowlist
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_dbms_security_procedures_allowlist
+            # Habilitar exportacion e importacion de archivos via APOC
+            - name: NEO4J_apoc_export_file_enabled
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_apoc_export_file_enabled
+            - name: NEO4J_apoc_import_file_enabled
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_apoc_import_file_enabled
+            - name: NEO4J_apoc_import_file_use__neo4j__config
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_apoc_import_file_use__neo4j__config
+            # Plugins a instalar automaticamente al iniciar
+            - name: NEO4J_PLUGINS
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_PLUGINS
+          ports:
+            - name: browser
+              containerPort: 7474
+              protocol: TCP
+            - name: bolt
+              containerPort: 7687
+              protocol: TCP
+          # Verificacion de salud usando cypher-shell
+          livenessProbe:
+            exec:
+              command:
+                - bash
+                - -c
+                - "cypher-shell -u neo4j -p \"$(cat /run/secrets/neo4j-password 2>/dev/null || echo restaurantes123)\" 'RETURN 1' || exit 1"
+            initialDelaySeconds: 90
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
+          readinessProbe:
+            tcpSocket:
+              port: 7687
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          # Sonda de arranque: Neo4j puede tardar en descargar plugins
+          startupProbe:
+            tcpSocket:
+              port: 7474
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 30
+          resources:
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            limits:
+              cpu: "2"
+              memory: 4Gi
+          volumeMounts:
+            - name: neo4j-data
+              mountPath: /data
+            - name: neo4j-logs
+              mountPath: /logs
+      # Volumen efimero para logs (no requiere persistencia)
+      volumes:
+        - name: neo4j-logs
+          emptyDir: {}
+  # Plantilla para volumen persistente de datos de Neo4j
+  volumeClaimTemplates:
+    - metadata:
+        name: neo4j-data
+        labels:
+          app.kubernetes.io/name: neo4j
+          app.kubernetes.io/part-of: restaurantes-olap
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi

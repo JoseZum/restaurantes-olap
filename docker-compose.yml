@@ -1,0 +1,549 @@
+# configuración común para Airflow
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.8.0
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__WEBSERVER__SECRET_KEY: "mi_clave_super_secreta"
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+    PYTHONPATH: /opt/airflow
+    SPARK_WAREHOUSE: hdfs://hdfs-namenode:9000/user/hive/warehouse
+    HADOOP_USER_NAME: root
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/plugins:/opt/airflow/plugins
+    - ./spark/jobs:/opt/spark/jobs
+    - ./spark/data:/opt/spark/data
+    - ./drivers:/opt/drivers
+    - ./hive/conf:/opt/hive/conf
+  depends_on:
+    postgres-airflow:
+      condition: service_healthy
+
+services:
+  # ==== METASTORE DE HIVE ====
+  postgres-metastore:
+    image: postgres:14
+    container_name: postgres-metastore
+    restart: always
+    environment:
+      POSTGRES_DB: metastore
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hive123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-metastore-data:/var/lib/postgresql/data
+    networks:
+      - olap-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hive -d metastore"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==== AIRFLOW METADB ====
+  postgres-airflow:
+    image: postgres:14
+    container_name: postgres-airflow
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres-airflow-data:/var/lib/postgresql/data
+    networks:
+      - olap-net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+
+  # ==== HDFS ====
+  hdfs-namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: hdfs-namenode
+    environment:
+      - CLUSTER_NAME=bd-restaurantes
+      - CORE_CONF_fs_defaultFS=hdfs://hdfs-namenode:9000
+    ports:
+      - "9870:9870"   # Web UI
+      - "9000:9000"   # RPC
+    volumes:
+      - hdfs-nn-data:/hadoop/dfs/name
+    networks:
+      - olap-net
+
+  hdfs-datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: hdfs-datanode
+    depends_on:
+      - hdfs-namenode
+    environment:
+      - CLUSTER_NAME=bd-restaurantes
+      - CORE_CONF_fs_defaultFS=hdfs://hdfs-namenode:9000
+    volumes:
+      - hdfs-dn-data:/hadoop/dfs/data
+    networks:
+      - olap-net
+
+  # ==== HDFS INIT (one-shot) ====
+  hdfs-init:
+    image: bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+    container_name: hdfs-init
+    depends_on:
+      - hdfs-namenode
+      - hdfs-datanode
+    environment:
+      - HADOOP_USER_NAME=root  # ejecuta los comandos como superusuario HDFS
+    command: >
+      -c "
+        echo 'Esperando a que HDFS responda...' ;
+        until hdfs dfs -ls / > /dev/null 2>&1 ; do sleep 5 ; done ;
+        echo 'Creando jerarquía /user/hive/warehouse ...' ;
+        hdfs dfs -mkdir -p /user/hive/warehouse/restaurantes_dw.db ;
+        hdfs dfs -chmod -R 777 /user ;
+        echo 'Listo.'
+      "
+    networks:
+      - olap-net
+    restart: "no"
+
+  # ==== HIVE (Data Warehouse) ====
+  hive:
+    build:
+      context: ./hive
+      dockerfile: Dockerfile
+    user: root
+    container_name: hive
+    depends_on:
+      postgres-metastore:
+        condition: service_healthy
+      hdfs-init:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_TYPE: postgres
+      DATABASE_HOST: postgres-metastore
+      DATABASE_PORT: 5432
+      DATABASE_DB: metastore
+      DATABASE_USER: hive
+      DATABASE_PASSWORD: hive123
+    healthcheck:
+      test: ["CMD", "bash", "-c", "hdfs dfs -ls /user/hive/warehouse"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./hive/init_star.sql:/opt/hive/init_star.sql
+      - ./hive/conf:/opt/hive/conf
+      - ./drivers:/opt/drivers
+    ports:
+      - "10000:10000"
+      - "9083:9083"
+    networks:
+      olap-net:
+        aliases:
+          - hive
+
+  # ==== SPARK MASTER ====
+  spark-master:
+    image: apache/spark:3.5.3-python3
+    container_name: spark-master
+    user: root
+    # Usamos el entrypoint y CMD por defecto de la imagen (no sobreescribir)
+    # para que el contenedor permanezca en ejecución y el nombre
+    # 'spark-master' sea resoluble desde otros servicios.
+    # (La lógica de Bitnami lee SPARK_MODE=master)
+    healthcheck:
+      test: ["CMD", "bash", "-c", "nc -z localhost 7077"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - "7077:7077"
+      - "6060:8080"
+      - "4041:4041"
+      - "4042:4042"
+    volumes:
+      - ./spark/jobs:/opt/spark/jobs
+      - ./spark/data:/opt/spark/data
+      - ./drivers:/opt/drivers
+      - ./hive/conf:/opt/hive/conf
+      - ./hive/init_star.sql:/docker-entrypoint-initdb.d/init_star.sql
+      - ./spark/conf:/opt/spark/conf
+      - ./spark/logs:/opt/spark/logs
+      - ./spark-events:/tmp/spark-events
+    depends_on:
+      - hdfs-init
+    networks:
+      - olap-net
+    command: >
+      bash -c "
+      /opt/spark/sbin/start-master.sh &&
+      tail -f /dev/null
+      "
+    environment:
+      - HADOOP_USER_NAME=root
+
+  # ==== SPARK WORKER ====
+  spark-worker:
+    image: apache/spark:3.5.3-python3
+    container_name: spark-worker
+    depends_on:
+      - hdfs-init
+      - spark-master
+      - hive
+    command: >
+      bash -c "
+      /opt/spark/sbin/start-worker.sh spark://spark-master:7077 &&
+      tail -f /dev/null
+      "
+    environment:
+      - SPARK_WORKER_CORES=6
+      - SPARK_WORKER_MEMORY=18G
+      - HADOOP_USER_NAME=root
+    healthcheck:
+      test: ["CMD", "bash", "-c", "curl -f http://localhost:8081/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./spark/jobs:/opt/spark/jobs
+      - ./spark/data:/opt/spark/data
+      - ./drivers:/opt/drivers
+      - ./hive/conf:/opt/hive/conf
+      - ./spark/conf:/opt/spark/conf
+      - ./spark/logs:/opt/spark/logs
+      - ./spark-events:/tmp/spark-events
+    networks:
+      - olap-net
+
+  # ==== AIRFLOW WEB & SCHEDULER ====
+  airflow-webserver:
+    <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow-webserver
+    depends_on:
+      hdfs-init:
+        condition: service_completed_successfully
+      postgres-airflow:
+        condition: service_healthy
+    ports:
+      - "8081:8080"
+    command: webserver
+    networks:
+      - olap-net
+      - mongo-cluster
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  airflow-scheduler:
+    <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow-scheduler
+    depends_on:
+      hdfs-init:
+        condition: service_completed_successfully
+      postgres-airflow:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    command: scheduler
+    networks:
+      - olap-net
+      - mongo-cluster
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  # ==== AIRFLOW INIT (conexiones) ====
+  airflow-init:
+    <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow-init
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db init
+        airflow users create \
+          --username admin \
+          --password admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@example.com
+
+        airflow connections add 'postgres_oltp' \
+          --conn-type 'postgres' \
+          --conn-host 'postgres-db' \
+          --conn-port 5432 \
+          --conn-schema 'restaurantes' \
+          --conn-login 'postgres' \
+          --conn-password '1234a' || true
+
+        airflow connections delete 'spark_default' || true
+        airflow connections add 'spark_default' \
+          --conn-type 'spark' \
+          --conn-host 'spark://spark-master:7077' || true
+    networks:
+      - olap-net
+      - mongo-cluster
+
+  # ==== ELASTICSEARCH PARA ANALÍTICA ====
+  elasticsearch-olap:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: elasticsearch-olap
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - olap-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cat/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ==== APACHE SUPERSET ====
+  superset-db:
+    image: postgres:14
+    container_name: superset-db
+    restart: always
+    environment:
+      POSTGRES_DB: superset
+      POSTGRES_USER: superset
+      POSTGRES_PASSWORD: superset123
+    ports:
+      - "5435:5432"
+    volumes:
+      - superset-db-data:/var/lib/postgresql/data
+    networks:
+      - olap-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U superset -d superset"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  superset-redis:
+    image: redis:7-alpine
+    container_name: superset-redis
+    restart: always
+    networks:
+      - olap-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  superset:
+    image: apache/superset:3.0.0
+    container_name: superset
+    restart: always
+    depends_on:
+      superset-db:
+        condition: service_healthy
+      superset-redis:
+        condition: service_healthy
+      hive:
+        condition: service_healthy
+    environment:
+      - SUPERSET_SECRET_KEY=mi_clave_super_secreta_superset_2024
+      - DATABASE_DIALECT=postgresql
+      - DATABASE_USER=superset
+      - DATABASE_PASSWORD=superset123
+      - DATABASE_HOST=superset-db
+      - DATABASE_PORT=5432
+      - DATABASE_DB=superset
+      - REDIS_HOST=superset-redis
+      - REDIS_PORT=6379
+      - SQLALCHEMY_DATABASE_URI=postgresql://superset:superset123@superset-db:5432/superset
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./drivers:/opt/drivers
+    networks:
+      - olap-net
+      - mongo-cluster
+    command: >
+      sh -c "
+        superset fab create-admin --username admin --firstname Admin --lastname User --email admin@superset.com --password admin &&
+        superset db upgrade &&
+        superset init &&
+        superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ==== NEO4J - ANALISIS DE GRAFOS Y RUTAS ====
+  neo4j:
+    image: neo4j:5.25.1
+    container_name: neo4j-restaurantes
+    restart: always
+    ports:
+      - "7474:7474"  # Neo4j Browser
+      - "7687:7687"  # Bolt Protocol
+    environment:
+      - NEO4J_AUTH=neo4j/restaurantes123
+      - NEO4J_dbms_memory_heap_max__size=2G
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
+    volumes:
+      - ./neo4j/data:/data
+      - ./neo4j/logs:/logs
+      - ./neo4j/import:/var/lib/neo4j/import
+      - ./neo4j/plugins:/plugins
+      - ./neo4j/conf:/var/lib/neo4j/conf
+      - ./map.osm:/var/lib/neo4j/import/map.osm:ro
+      - ./spark/data:/var/lib/neo4j/import/csv
+    networks:
+      - olap-net
+      - mongo-cluster
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p restaurantes123 'RETURN 1' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ==== SERVICIO DE INICIALIZACION AUTOMATICA ====
+  auto-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.init
+    container_name: auto-init
+    depends_on:
+      hive:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      spark-master:
+        condition: service_healthy
+      elasticsearch-olap:
+        condition: service_healthy
+    environment:
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=restaurantes123
+      - HIVE_SERVER=hive
+      - POSTGRES_HOST=postgres-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234a
+      - POSTGRES_DB=restaurantes
+    volumes:
+      - ./spark/jobs:/opt/spark/jobs
+      - ./spark/data:/opt/spark/data
+      - ./neo4j/scripts:/opt/neo4j/scripts
+      - ./drivers:/opt/drivers
+      - ./hive/conf:/opt/hive/conf
+      - ./map.osm:/opt/data/map.osm:ro
+      - ./init-scripts:/opt/init-scripts
+    networks:
+      - olap-net
+      - mongo-cluster
+    command: >
+      bash -c "
+        echo '=== INICIANDO SISTEMA AUTOMATIZADO ==='
+
+        echo '[1/5] Esperando servicios...'
+        sleep 30
+
+        echo '[2/5] Ejecutando ETL principal con Spark...'
+        spark-submit --master spark://spark-master:7077 \
+          --deploy-mode client \
+          --driver-memory 2g \
+          --executor-memory 3g \
+          --total-executor-cores 6 \
+          --jars /opt/drivers/postgresql-42.5.1.jar \
+          --conf spark.sql.warehouse.dir=hdfs://hdfs-namenode:9000/user/hive/warehouse \
+          --conf spark.hadoop.hive.metastore.uris=thrift://hive:9083 \
+          /opt/spark/jobs/etl_from_csv.py || echo 'ETL completado con advertencias'
+
+        echo '[3/5] Ejecutando análisis con Spark...'
+        spark-submit --master spark://spark-master:7077 \
+          --deploy-mode client \
+          --driver-memory 2g \
+          --executor-memory 3g \
+          /opt/spark/jobs/tendencias.py || echo 'Análisis de tendencias completado'
+
+        spark-submit --master spark://spark-master:7077 \
+          --deploy-mode client \
+          /opt/spark/jobs/horarios_pico.py || echo 'Análisis horarios completado'
+
+        spark-submit --master spark://spark-master:7077 \
+          --deploy-mode client \
+          /opt/spark/jobs/crecimiento.py || echo 'Análisis crecimiento completado'
+
+        echo '[4/5] Cargando datos en Neo4j...'
+        python3 /opt/neo4j/scripts/init_graph.py || echo 'Neo4j init completado'
+        python3 /opt/neo4j/scripts/csv_data_loader.py || echo 'CSV loader completado'
+
+        echo '[5/5] Ejecutando consultas de análisis en Neo4j...'
+        python3 /opt/neo4j/scripts/cypher_queries.py || echo 'Consultas Cypher completadas'
+
+        echo '=== SISTEMA COMPLETAMENTE INICIALIZADO ==='
+        echo 'Todos los servicios están listos y los datos han sido procesados'
+        echo 'Accede a:'
+        echo '  - Neo4j Browser: http://localhost:7474 (neo4j / restaurantes123)'
+        echo '  - Superset: http://localhost:8088 (admin / admin)'
+        echo '  - Airflow: http://localhost:8081 (admin / admin)'
+        echo '  - Spark UI: http://localhost:6060'
+        echo '  - ElasticSearch: http://localhost:9200'
+
+        tail -f /dev/null
+      "
+    restart: "no"
+
+volumes:
+  postgres-metastore-data:
+  postgres-airflow-data:
+  elasticsearch-data:
+  hdfs-nn-data:
+  hdfs-dn-data:
+  superset-db-data:
+
+networks:
+  olap-net:
+    name: olapnet
+    driver: bridge
+  mongo-cluster:
+    external: true

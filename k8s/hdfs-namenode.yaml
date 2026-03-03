@@ -1,0 +1,150 @@
+# =============================================================================
+# HDFS NameNode - Nodo maestro del sistema de archivos distribuido
+# Gestiona los metadatos del sistema de archivos HDFS (Hadoop 3.2.1).
+# Se despliega como StatefulSet para garantizar identidad de red estable
+# y almacenamiento persistente para los metadatos de nombres.
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: hdfs-namenode
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: hdfs-namenode
+    app.kubernetes.io/component: almacenamiento
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  # Servicio headless para StatefulSet - proporciona DNS estable por pod
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: hdfs-namenode
+  ports:
+    - name: web-ui
+      port: 9870
+      targetPort: 9870
+      protocol: TCP
+    - name: rpc
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+---
+# Servicio adicional con ClusterIP para acceso interno desde otros componentes
+apiVersion: v1
+kind: Service
+metadata:
+  name: hdfs-namenode-svc
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: hdfs-namenode
+    app.kubernetes.io/component: almacenamiento
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: hdfs-namenode
+  ports:
+    - name: web-ui
+      port: 9870
+      targetPort: 9870
+      protocol: TCP
+    - name: rpc
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hdfs-namenode
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: hdfs-namenode
+    app.kubernetes.io/component: almacenamiento
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  serviceName: hdfs-namenode
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hdfs-namenode
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hdfs-namenode
+        app.kubernetes.io/component: almacenamiento
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      # Evitar programar NameNode y DataNode en el mismo nodo fisico
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - hdfs-datanode
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: namenode
+          image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: CLUSTER_NAME
+            - name: CORE_CONF_fs_defaultFS
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: CORE_CONF_fs_defaultFS
+          ports:
+            - name: web-ui
+              containerPort: 9870
+              protocol: TCP
+            - name: rpc
+              containerPort: 9000
+              protocol: TCP
+          # Verificacion de salud: comprobar que el puerto RPC responde
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9870
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 2Gi
+          volumeMounts:
+            - name: namenode-data
+              mountPath: /hadoop/dfs/name
+  # Plantilla para volumen persistente - almacena metadatos de HDFS
+  volumeClaimTemplates:
+    - metadata:
+        name: namenode-data
+        labels:
+          app.kubernetes.io/name: hdfs-namenode
+          app.kubernetes.io/part-of: restaurantes-olap
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi

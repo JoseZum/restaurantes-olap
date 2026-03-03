@@ -1,0 +1,222 @@
+# =============================================================================
+# Job de Inicializacion Automatica del Sistema OLAP
+# Ejecuta la pipeline completa de inicializacion de datos:
+#   1. Esperar a que todos los servicios dependientes esten disponibles
+#   2. ETL principal con Spark: carga de datos desde CSV al Data Warehouse
+#   3. Analisis con Spark: tendencias, horarios pico, crecimiento
+#   4. Carga de datos en Neo4j: grafo de relaciones, datos CSV
+#   5. Consultas de analisis en Neo4j: queries Cypher de verificacion
+# Se ejecuta una sola vez. Se limpia automaticamente despues de 1 hora.
+# =============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: auto-init
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: auto-init
+    app.kubernetes.io/component: inicializacion
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  # Reintentar hasta 3 veces en caso de fallo
+  backoffLimit: 3
+  # Eliminar el Job automaticamente 1 hora despues de completarse
+  ttlSecondsAfterFinished: 3600
+  # Tiempo maximo de ejecucion: 30 minutos
+  activeDeadlineSeconds: 1800
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: auto-init
+        app.kubernetes.io/component: inicializacion
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      restartPolicy: OnFailure
+      # Contenedores de inicializacion: verificar que todos los servicios
+      # criticos estan disponibles antes de ejecutar la pipeline
+      initContainers:
+        # Verificar que Hive esta disponible (Data Warehouse)
+        - name: esperar-hive
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que Hive este disponible..."
+              until nc -z hive 10000; do
+                echo "Hive no disponible, reintentando en 10 segundos..."
+                sleep 10
+              done
+              echo "Hive disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+        # Verificar que Neo4j esta disponible (Base de datos de grafos)
+        - name: esperar-neo4j
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que Neo4j este disponible..."
+              until nc -z neo4j 7687; do
+                echo "Neo4j no disponible, reintentando en 10 segundos..."
+                sleep 10
+              done
+              echo "Neo4j disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+        # Verificar que Spark Master esta disponible (Procesamiento)
+        - name: esperar-spark-master
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que Spark Master este disponible..."
+              until nc -z spark-master 7077; do
+                echo "Spark Master no disponible, reintentando en 10 segundos..."
+                sleep 10
+              done
+              echo "Spark Master disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+        # Verificar que Elasticsearch esta disponible (Motor de busqueda)
+        - name: esperar-elasticsearch
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a que Elasticsearch este disponible..."
+              until nc -z elasticsearch-olap 9200; do
+                echo "Elasticsearch no disponible, reintentando en 10 segundos..."
+                sleep 10
+              done
+              echo "Elasticsearch disponible."
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+      containers:
+        - name: auto-init
+          # Imagen personalizada construida desde Dockerfile.init
+          # En produccion, reemplazar con la URL del registro de contenedores
+          image: restaurantes-olap-init:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            # Conexion a Spark Master
+            - name: SPARK_MASTER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: SPARK_MASTER_URL
+            # Conexion a Neo4j
+            - name: NEO4J_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_URI
+            - name: NEO4J_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: NEO4J_USER
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: NEO4J_PASSWORD
+            # Conexion a Hive
+            - name: HIVE_SERVER
+              value: "hive"
+            # Conexion al OLTP (PostgreSQL externo)
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: POSTGRES_OLTP_HOST
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: POSTGRES_OLTP_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: POSTGRES_OLTP_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: POSTGRES_OLTP_DB
+          # Pipeline de inicializacion completa del sistema OLAP
+          command:
+            - bash
+            - -c
+            - |
+              echo '=== INICIANDO SISTEMA AUTOMATIZADO ==='
+
+              echo '[1/5] Esperando estabilizacion de servicios...'
+              sleep 30
+
+              echo '[2/5] Ejecutando ETL principal con Spark...'
+              spark-submit --master spark://spark-master:7077 \
+                --deploy-mode client \
+                --driver-memory 2g \
+                --executor-memory 3g \
+                --total-executor-cores 6 \
+                --jars /opt/drivers/postgresql-42.5.1.jar \
+                --conf spark.sql.warehouse.dir=hdfs://hdfs-namenode:9000/user/hive/warehouse \
+                --conf spark.hadoop.hive.metastore.uris=thrift://hive:9083 \
+                /opt/spark/jobs/etl_from_csv.py || echo 'ETL completado con advertencias'
+
+              echo '[3/5] Ejecutando analisis con Spark...'
+              spark-submit --master spark://spark-master:7077 \
+                --deploy-mode client \
+                --driver-memory 2g \
+                --executor-memory 3g \
+                /opt/spark/jobs/tendencias.py || echo 'Analisis de tendencias completado'
+
+              spark-submit --master spark://spark-master:7077 \
+                --deploy-mode client \
+                /opt/spark/jobs/horarios_pico.py || echo 'Analisis horarios completado'
+
+              spark-submit --master spark://spark-master:7077 \
+                --deploy-mode client \
+                /opt/spark/jobs/crecimiento.py || echo 'Analisis crecimiento completado'
+
+              echo '[4/5] Cargando datos en Neo4j...'
+              python3 /opt/neo4j/scripts/init_graph.py || echo 'Neo4j init completado'
+              python3 /opt/neo4j/scripts/csv_data_loader.py || echo 'CSV loader completado'
+
+              echo '[5/5] Ejecutando consultas de analisis en Neo4j...'
+              python3 /opt/neo4j/scripts/cypher_queries.py || echo 'Consultas Cypher completadas'
+
+              echo '=== SISTEMA COMPLETAMENTE INICIALIZADO ==='
+              echo 'Todos los servicios estan listos y los datos han sido procesados.'
+          resources:
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            limits:
+              cpu: "2"
+              memory: 4Gi

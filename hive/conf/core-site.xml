@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <!-- 1. Cambiar a tu namenode HDFS -->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://hdfs-namenode:9000</value>
+    </property>
+
+    <!-- (Opcional) Si quieres apuntar también el temp dir a HDFS -->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/opt/hive/tmp</value>
+    </property>
+
+    <!-- ProxyUser de Hive (igual que antes) -->
+    <property>
+        <name>hadoop.proxyuser.hive.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hive.groups</name>
+        <value>*</value>
+    </property>
+
+    <!-- 2. Forzar el mapeo estático de grupos: 
+         Aquí decimos “el usuario hdfs pertenece siempre al grupo supergroup”
+    -->
+    <property>
+        <name>hadoop.user.group.static.mapping.overrides</name>
+        <value>hdfs=supergroup</value>
+    </property>
+</configuration>

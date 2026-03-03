@@ -1,0 +1,120 @@
+# =============================================================================
+# PostgreSQL Metastore - Base de datos para metadatos de Apache Hive
+# Almacena el catalogo de tablas, particiones y esquemas del Data Warehouse.
+# Se despliega como StatefulSet con volumen persistente de 5Gi.
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-metastore
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: postgres-metastore
+    app.kubernetes.io/component: base-de-datos
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  # Servicio headless para StatefulSet
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: postgres-metastore
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: 5432
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-metastore
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: postgres-metastore
+    app.kubernetes.io/component: base-de-datos
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  serviceName: postgres-metastore
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgres-metastore
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: postgres-metastore
+        app.kubernetes.io/component: base-de-datos
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: DATABASE_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: olap-config
+                  key: DATABASE_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: HIVE_METASTORE_PASSWORD
+          ports:
+            - name: postgresql
+              containerPort: 5432
+              protocol: TCP
+          # Verificacion de salud usando pg_isready (nativo de PostgreSQL)
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - hive
+                - -d
+                - metastore
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - hive
+                - -d
+                - metastore
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: metastore-data
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata
+  # Plantilla para volumen persistente del metastore de Hive
+  volumeClaimTemplates:
+    - metadata:
+        name: metastore-data
+        labels:
+          app.kubernetes.io/name: postgres-metastore
+          app.kubernetes.io/part-of: restaurantes-olap
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi

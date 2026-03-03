@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_503b5879184e0cb6f374398f62a658bb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_503b5879184e0cb6f374398f62a658bb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_503b5879184e0cb6f374398f62a658bb = L.map(
+                "map_503b5879184e0cb6f374398f62a658bb",
+                {
+                    center: [9.857811400000001, -83.92221339375001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d8d3f2e9276ffde9ca8247481b500fe0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d8d3f2e9276ffde9ca8247481b500fe0.addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var marker_299bad59c24557bb6486e8830e8ced86 = L.marker(
+                [9.8767673, -83.9181586],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_726bd51a01f50203a57dcea255bf0c2d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e5283801a386dcfd97dfdef20bd76d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2ebebf34a6aad23b713dd21cfbbe296 = $(`<div id="html_c2ebebf34a6aad23b713dd21cfbbe296" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Construcción Ayllón y asociados S.A.<br/>Tipo: China<br/>Rating: 3.7</div>`)[0];
+                popup_5e5283801a386dcfd97dfdef20bd76d4.setContent(html_c2ebebf34a6aad23b713dd21cfbbe296);
+            
+        
+
+        marker_299bad59c24557bb6486e8830e8ced86.bindPopup(popup_5e5283801a386dcfd97dfdef20bd76d4)
+        ;
+
+        
+    
+    
+                marker_299bad59c24557bb6486e8830e8ced86.setIcon(icon_726bd51a01f50203a57dcea255bf0c2d);
+            
+    
+            var marker_a57d5771a46a660f70cb5f5798e7a30f = L.marker(
+                [9.8735566, -83.9143437],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_19ba9bd8a2c6518b04b3e33958e68e18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df8b4859973bfaff2f87db475087dd85 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1cb6e97ef708b72f33ac7f6688b0d56e = $(`<div id="html_1cb6e97ef708b72f33ac7f6688b0d56e" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Comercializadora del Noroeste S.L.L.<br/>Tipo: Italiana<br/>Rating: 4.9</div>`)[0];
+                popup_df8b4859973bfaff2f87db475087dd85.setContent(html_1cb6e97ef708b72f33ac7f6688b0d56e);
+            
+        
+
+        marker_a57d5771a46a660f70cb5f5798e7a30f.bindPopup(popup_df8b4859973bfaff2f87db475087dd85)
+        ;
+
+        
+    
+    
+                marker_a57d5771a46a660f70cb5f5798e7a30f.setIcon(icon_19ba9bd8a2c6518b04b3e33958e68e18);
+            
+    
+            var marker_c5a9963c68550acb2f8f00809405f183 = L.marker(
+                [9.8510209, -83.9391442],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_bc6196f3679b96c98da41fb6d46426e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4743f5c3c8880b2b358a09aa23f9b37b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ae079120e48c2fe26f05c5dd668bf26 = $(`<div id="html_0ae079120e48c2fe26f05c5dd668bf26" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Consultoría Losada y asociados S.Com.<br/>Tipo: Española<br/>Rating: 3.6</div>`)[0];
+                popup_4743f5c3c8880b2b358a09aa23f9b37b.setContent(html_0ae079120e48c2fe26f05c5dd668bf26);
+            
+        
+
+        marker_c5a9963c68550acb2f8f00809405f183.bindPopup(popup_4743f5c3c8880b2b358a09aa23f9b37b)
+        ;
+
+        
+    
+    
+                marker_c5a9963c68550acb2f8f00809405f183.setIcon(icon_bc6196f3679b96c98da41fb6d46426e6);
+            
+    
+            var marker_5c841cf4d7e6f8e8a93cb9f890cbda55 = L.marker(
+                [9.8501272, -83.939168],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_3dffc42bbc841c03dceef2424228943f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67cc7a244c228b002685cfa228f586e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ab15285adb60646e2a4f5c0cfb9ff9f6 = $(`<div id="html_ab15285adb60646e2a4f5c0cfb9ff9f6" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Finanzas Arnaiz S.L.<br/>Tipo: Mexicana<br/>Rating: 3.6</div>`)[0];
+                popup_67cc7a244c228b002685cfa228f586e6.setContent(html_ab15285adb60646e2a4f5c0cfb9ff9f6);
+            
+        
+
+        marker_5c841cf4d7e6f8e8a93cb9f890cbda55.bindPopup(popup_67cc7a244c228b002685cfa228f586e6)
+        ;
+
+        
+    
+    
+                marker_5c841cf4d7e6f8e8a93cb9f890cbda55.setIcon(icon_3dffc42bbc841c03dceef2424228943f);
+            
+    
+            var marker_e78ea201ef1f439bc3a2922752c7cfc2 = L.marker(
+                [9.8472722, -83.9266339],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_72105c87203d363dc005b9e7e6397be0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd7a7a05a69fe4d1b71e9c2fb3e2bf42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60c8c72b00934c84a5b51bb3b5275f5a = $(`<div id="html_60c8c72b00934c84a5b51bb3b5275f5a" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Rosell y asociados S.Coop.<br/>Tipo: Americana<br/>Rating: 4.1</div>`)[0];
+                popup_bd7a7a05a69fe4d1b71e9c2fb3e2bf42.setContent(html_60c8c72b00934c84a5b51bb3b5275f5a);
+            
+        
+
+        marker_e78ea201ef1f439bc3a2922752c7cfc2.bindPopup(popup_bd7a7a05a69fe4d1b71e9c2fb3e2bf42)
+        ;
+
+        
+    
+    
+                marker_e78ea201ef1f439bc3a2922752c7cfc2.setIcon(icon_72105c87203d363dc005b9e7e6397be0);
+            
+    
+            var marker_59e037ff93e90a8e6564ca4bd8f09fd4 = L.marker(
+                [9.8655889, -83.9001541],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_db38818ebf747807541decf451dcbafa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_61be65ebf6c774b1e978ee32686613d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc48a66dd41f15186b6fa039c6cd388a = $(`<div id="html_fc48a66dd41f15186b6fa039c6cd388a" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Farmaceútica Alemán y asociados S.Coop.<br/>Tipo: Italiana<br/>Rating: 3.8</div>`)[0];
+                popup_61be65ebf6c774b1e978ee32686613d8.setContent(html_fc48a66dd41f15186b6fa039c6cd388a);
+            
+        
+
+        marker_59e037ff93e90a8e6564ca4bd8f09fd4.bindPopup(popup_61be65ebf6c774b1e978ee32686613d8)
+        ;
+
+        
+    
+    
+                marker_59e037ff93e90a8e6564ca4bd8f09fd4.setIcon(icon_db38818ebf747807541decf451dcbafa);
+            
+    
+            var marker_8a5487520f3679075a077db680fa2fce = L.marker(
+                [9.8440476, -83.9162575],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_b54f356c55ad40cc53040c431c16b4af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58d2c08d15b808bca512e2fe54b79a3b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ce0cc7f197760ce7d52643d19821951 = $(`<div id="html_0ce0cc7f197760ce7d52643d19821951" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Hermanos Pinilla S.L.<br/>Tipo: Española<br/>Rating: 3.6</div>`)[0];
+                popup_58d2c08d15b808bca512e2fe54b79a3b.setContent(html_0ce0cc7f197760ce7d52643d19821951);
+            
+        
+
+        marker_8a5487520f3679075a077db680fa2fce.bindPopup(popup_58d2c08d15b808bca512e2fe54b79a3b)
+        ;
+
+        
+    
+    
+                marker_8a5487520f3679075a077db680fa2fce.setIcon(icon_b54f356c55ad40cc53040c431c16b4af);
+            
+    
+            var marker_38b0e1f7fa4e06b5afbdb48ee39d8786 = L.marker(
+                [9.8574918, -83.9391257],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_642df92644bd721118e84ed5734f19ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58dac57bae84407229965dac4ffa6aed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2b37669c92164b951a6d2bb93ca40a6d = $(`<div id="html_2b37669c92164b951a6d2bb93ca40a6d" style="width: 100.0%; height: 100.0%;">🍽️ Restaurante Familia Fabra S.L.U.<br/>Tipo: Italiana<br/>Rating: 4.4</div>`)[0];
+                popup_58dac57bae84407229965dac4ffa6aed.setContent(html_2b37669c92164b951a6d2bb93ca40a6d);
+            
+        
+
+        marker_38b0e1f7fa4e06b5afbdb48ee39d8786.bindPopup(popup_58dac57bae84407229965dac4ffa6aed)
+        ;
+
+        
+    
+    
+                marker_38b0e1f7fa4e06b5afbdb48ee39d8786.setIcon(icon_642df92644bd721118e84ed5734f19ac);
+            
+    
+            var marker_db9dbd10ca554247f248c38b1827557f = L.marker(
+                [9.8501272, -83.939168],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_7445cc3efec682b77ade5f806ec5cf09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3926936fc5722722a84d89215eb3e60e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4088d780a39e574ba2c7e2683f104714 = $(`<div id="html_4088d780a39e574ba2c7e2683f104714" style="width: 100.0%; height: 100.0%;">👤 Marcelo<br/>Ocupación: Artista</div>`)[0];
+                popup_3926936fc5722722a84d89215eb3e60e.setContent(html_4088d780a39e574ba2c7e2683f104714);
+            
+        
+
+        marker_db9dbd10ca554247f248c38b1827557f.bindPopup(popup_3926936fc5722722a84d89215eb3e60e)
+        ;
+
+        
+    
+    
+                marker_db9dbd10ca554247f248c38b1827557f.setIcon(icon_7445cc3efec682b77ade5f806ec5cf09);
+            
+    
+            var marker_026088133e02d3acdbd55ed96a10b6f3 = L.marker(
+                [9.8718612, -83.9054361],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_153eb03061a791942a9d6654100e2840 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff251a04ab4cba0368b19257a4c2793a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10146cf9aa8049559a3c638f5f8f1c29 = $(`<div id="html_10146cf9aa8049559a3c638f5f8f1c29" style="width: 100.0%; height: 100.0%;">👤 Estefanía<br/>Ocupación: Abogado</div>`)[0];
+                popup_ff251a04ab4cba0368b19257a4c2793a.setContent(html_10146cf9aa8049559a3c638f5f8f1c29);
+            
+        
+
+        marker_026088133e02d3acdbd55ed96a10b6f3.bindPopup(popup_ff251a04ab4cba0368b19257a4c2793a)
+        ;
+
+        
+    
+    
+                marker_026088133e02d3acdbd55ed96a10b6f3.setIcon(icon_153eb03061a791942a9d6654100e2840);
+            
+    
+            var marker_88d356e4f7a23036288a0424d9de073e = L.marker(
+                [9.8440476, -83.9162575],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_9054ee83c47f54c20c29362999ad1a4c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8118305fb8c425df9db688a4693af374 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7bbbe9ae47631403c262201f9d4542a = $(`<div id="html_e7bbbe9ae47631403c262201f9d4542a" style="width: 100.0%; height: 100.0%;">👤 Augusto<br/>Ocupación: Abogado</div>`)[0];
+                popup_8118305fb8c425df9db688a4693af374.setContent(html_e7bbbe9ae47631403c262201f9d4542a);
+            
+        
+
+        marker_88d356e4f7a23036288a0424d9de073e.bindPopup(popup_8118305fb8c425df9db688a4693af374)
+        ;
+
+        
+    
+    
+                marker_88d356e4f7a23036288a0424d9de073e.setIcon(icon_9054ee83c47f54c20c29362999ad1a4c);
+            
+    
+            var marker_9bb89dab6b1f2b8e88945dcf71b66928 = L.marker(
+                [9.8442773, -83.9393247],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_33bc118fd115145ede297e3508842f00 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68eef7fa617f10592e563e0683607f1d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d1cd138db4560c3767e9bf085eccaf3 = $(`<div id="html_2d1cd138db4560c3767e9bf085eccaf3" style="width: 100.0%; height: 100.0%;">👤 Rosalva<br/>Ocupación: Empresario</div>`)[0];
+                popup_68eef7fa617f10592e563e0683607f1d.setContent(html_2d1cd138db4560c3767e9bf085eccaf3);
+            
+        
+
+        marker_9bb89dab6b1f2b8e88945dcf71b66928.bindPopup(popup_68eef7fa617f10592e563e0683607f1d)
+        ;
+
+        
+    
+    
+                marker_9bb89dab6b1f2b8e88945dcf71b66928.setIcon(icon_33bc118fd115145ede297e3508842f00);
+            
+    
+            var marker_2e5434c9b814d1a957ab3abd6b123572 = L.marker(
+                [9.8594573, -83.905949],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_b2fb84c6e97bde07aab8278d2c4c0ad0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31b1f7407ca94d7502883f2fd64bba18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6259a34401ba5bc32b18a1cedfce39ac = $(`<div id="html_6259a34401ba5bc32b18a1cedfce39ac" style="width: 100.0%; height: 100.0%;">👤 Remigio<br/>Ocupación: Profesor</div>`)[0];
+                popup_31b1f7407ca94d7502883f2fd64bba18.setContent(html_6259a34401ba5bc32b18a1cedfce39ac);
+            
+        
+
+        marker_2e5434c9b814d1a957ab3abd6b123572.bindPopup(popup_31b1f7407ca94d7502883f2fd64bba18)
+        ;
+
+        
+    
+    
+                marker_2e5434c9b814d1a957ab3abd6b123572.setIcon(icon_b2fb84c6e97bde07aab8278d2c4c0ad0);
+            
+    
+            var marker_14fc5ec1ddaf5082a73274cc474d6364 = L.marker(
+                [9.8718612, -83.9054361],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_0610693319cfbdb4d8f8ac54d2ff6eb3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e73b178ae8d7b38e375b84c5d469f291 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2888d63fddfb6b782ebdb948eaff9a3b = $(`<div id="html_2888d63fddfb6b782ebdb948eaff9a3b" style="width: 100.0%; height: 100.0%;">👤 Demetrio<br/>Ocupación: Abogado</div>`)[0];
+                popup_e73b178ae8d7b38e375b84c5d469f291.setContent(html_2888d63fddfb6b782ebdb948eaff9a3b);
+            
+        
+
+        marker_14fc5ec1ddaf5082a73274cc474d6364.bindPopup(popup_e73b178ae8d7b38e375b84c5d469f291)
+        ;
+
+        
+    
+    
+                marker_14fc5ec1ddaf5082a73274cc474d6364.setIcon(icon_0610693319cfbdb4d8f8ac54d2ff6eb3);
+            
+    
+            var marker_dac7cc6117938de5f1e8b14983834b63 = L.marker(
+                [9.8540254, -83.9193676],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_21b98b67ab352ef51cb3b26a4d5677d7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a1b49762b1a3d1ef2be45fb91aaa1330 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c039e5a6428fb4a1fe598e3416211a90 = $(`<div id="html_c039e5a6428fb4a1fe598e3416211a90" style="width: 100.0%; height: 100.0%;">👤 Adriana<br/>Ocupación: Abogado</div>`)[0];
+                popup_a1b49762b1a3d1ef2be45fb91aaa1330.setContent(html_c039e5a6428fb4a1fe598e3416211a90);
+            
+        
+
+        marker_dac7cc6117938de5f1e8b14983834b63.bindPopup(popup_a1b49762b1a3d1ef2be45fb91aaa1330)
+        ;
+
+        
+    
+    
+                marker_dac7cc6117938de5f1e8b14983834b63.setIcon(icon_21b98b67ab352ef51cb3b26a4d5677d7);
+            
+    
+            var marker_b74fc046294948bd621d1fc18b03e334 = L.marker(
+                [9.8634527, -83.9314896],
+                {
+}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+            var icon_13f4af30dcba32dc2d8ee70a5ae576b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b1510cfda6e6ac20d3ddb6dd9b2c564 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a7c1ed6cb2765bf1c5b6f628aafdffa = $(`<div id="html_2a7c1ed6cb2765bf1c5b6f628aafdffa" style="width: 100.0%; height: 100.0%;">👤 Rolando<br/>Ocupación: Abogado</div>`)[0];
+                popup_6b1510cfda6e6ac20d3ddb6dd9b2c564.setContent(html_2a7c1ed6cb2765bf1c5b6f628aafdffa);
+            
+        
+
+        marker_b74fc046294948bd621d1fc18b03e334.bindPopup(popup_6b1510cfda6e6ac20d3ddb6dd9b2c564)
+        ;
+
+        
+    
+    
+                marker_b74fc046294948bd621d1fc18b03e334.setIcon(icon_13f4af30dcba32dc2d8ee70a5ae576b9);
+            
+    
+            var poly_line_7a62a557e7c15e0b0500f52158f7804e = L.polyline(
+                [[9.8767673, -83.9181586], [9.8501272, -83.939168]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_503b5879184e0cb6f374398f62a658bb);
+        
+    
+        var popup_6897ed2067227c6a67d28eb265eea7eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b2ac9f2620ba875991c29d4ce3b3520 = $(`<div id="html_1b2ac9f2620ba875991c29d4ce3b3520" style="width: 100.0%; height: 100.0%;">Ruta: Marcelo → Restaurante Construcción Ayllón y asociados S.A.</div>`)[0];
+                popup_6897ed2067227c6a67d28eb265eea7eb.setContent(html_1b2ac9f2620ba875991c29d4ce3b3520);
+            
+        
+
+        poly_line_7a62a557e7c15e0b0500f52158f7804e.bindPopup(popup_6897ed2067227c6a67d28eb265eea7eb)
+        ;
+
+        
+    
+</script>
+</html>

@@ -1,0 +1,39 @@
+# Orquestacion de recursos Kubernetes para el sistema OLAP
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: restaurantes-olap
+
+# Etiquetas comunes aplicadas a todos los recursos
+commonLabels:
+  app.kubernetes.io/part-of: restaurantes-olap
+  app.kubernetes.io/managed-by: kustomize
+
+resources:
+  # Namespace
+  - namespace.yaml
+  # Configuracion
+  - configmap.yaml
+  - secrets.yaml
+  # Almacenamiento HDFS
+  - hdfs-namenode.yaml
+  - hdfs-datanode.yaml
+  # Metastore de Hive
+  - postgres-metastore.yaml
+  - hive.yaml
+  # Procesamiento con Spark
+  - spark-master.yaml
+  - spark-worker.yaml
+  # Orquestacion con Airflow
+  - postgres-airflow.yaml
+  - airflow.yaml
+  # Base de datos de grafos
+  - neo4j.yaml
+  # Motor de busqueda
+  - elasticsearch.yaml
+  # Visualizacion con Superset
+  - superset.yaml
+  # Trabajo de inicializacion
+  - init-job.yaml
+  # Punto de entrada
+  - ingress.yaml

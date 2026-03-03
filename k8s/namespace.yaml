@@ -1,0 +1,15 @@
+# =============================================================================
+# Namespace: restaurantes-olap
+# Define el espacio de nombres aislado para todos los componentes del sistema
+# OLAP de la plataforma de restaurantes (Big Data Analytics).
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: restaurantes-olap
+    app.kubernetes.io/part-of: restaurantes-olap
+    app.kubernetes.io/managed-by: kustomize
+  annotations:
+    description: "Sistema OLAP de analitica de datos para plataforma de restaurantes"

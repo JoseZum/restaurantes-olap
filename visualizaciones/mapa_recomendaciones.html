@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_847049167deda30c906448f243b38159 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_847049167deda30c906448f243b38159" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_847049167deda30c906448f243b38159 = L.map(
+                "map_847049167deda30c906448f243b38159",
+                {
+                    center: [9.857811400000001, -83.92221339375001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a34e554e6095ee7d84bdb6a9b4c525e3 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a34e554e6095ee7d84bdb6a9b4c525e3.addTo(map_847049167deda30c906448f243b38159);
+        
+    
+            var poly_line_20dd49a64bf56da9729274e6bbc09aa0 = L.polyline(
+                [[9.8718612, -83.9054361], [9.8501272, -83.939168]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_9c02cfabdafcab3f3130cc699b4c64de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d4a40dc474d20ff24234141b646c87d = $(`<div id="html_9d4a40dc474d20ff24234141b646c87d" style="width: 100.0%; height: 100.0%;">Recomendación: Amaro → Marcelo<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_9c02cfabdafcab3f3130cc699b4c64de.setContent(html_9d4a40dc474d20ff24234141b646c87d);
+            
+        
+
+        poly_line_20dd49a64bf56da9729274e6bbc09aa0.bindPopup(popup_9c02cfabdafcab3f3130cc699b4c64de)
+        ;
+
+        
+    
+    
+            var circle_marker_c8f7ed4d8fa73f505c37c76aa85e19da = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_8dfa0d0b629e7a96e6e0dd8c62ee84a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72dea78556d32c23ee426f008e637d25 = $(`<div id="html_72dea78556d32c23ee426f008e637d25" style="width: 100.0%; height: 100.0%;">Amaro</div>`)[0];
+                popup_8dfa0d0b629e7a96e6e0dd8c62ee84a5.setContent(html_72dea78556d32c23ee426f008e637d25);
+            
+        
+
+        circle_marker_c8f7ed4d8fa73f505c37c76aa85e19da.bindPopup(popup_8dfa0d0b629e7a96e6e0dd8c62ee84a5)
+        ;
+
+        
+    
+    
+            var circle_marker_56111728edc1af369fc57fa55ebaa0f5 = L.circleMarker(
+                [9.8501272, -83.939168],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_522e00247536d8fb64030840277dfb9a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6c85baa039df38bda6ea16cb92b7bec9 = $(`<div id="html_6c85baa039df38bda6ea16cb92b7bec9" style="width: 100.0%; height: 100.0%;">Marcelo</div>`)[0];
+                popup_522e00247536d8fb64030840277dfb9a.setContent(html_6c85baa039df38bda6ea16cb92b7bec9);
+            
+        
+
+        circle_marker_56111728edc1af369fc57fa55ebaa0f5.bindPopup(popup_522e00247536d8fb64030840277dfb9a)
+        ;
+
+        
+    
+    
+            var poly_line_d6fa41b7e41c6dfec5a4feb6af93f3b7 = L.polyline(
+                [[9.8442773, -83.9393247], [9.8501272, -83.939168]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_d456c7c94b72596d290785bd55af7347 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5a0f3fcc6f1a2039cf5ecb4400ceb731 = $(`<div id="html_5a0f3fcc6f1a2039cf5ecb4400ceb731" style="width: 100.0%; height: 100.0%;">Recomendación: Rosalva → Marcelo<br/>Razón: proximidad<br/>Peso: 9</div>`)[0];
+                popup_d456c7c94b72596d290785bd55af7347.setContent(html_5a0f3fcc6f1a2039cf5ecb4400ceb731);
+            
+        
+
+        poly_line_d6fa41b7e41c6dfec5a4feb6af93f3b7.bindPopup(popup_d456c7c94b72596d290785bd55af7347)
+        ;
+
+        
+    
+    
+            var circle_marker_3c5bbad46e87652e23c54e339edc391b = L.circleMarker(
+                [9.8442773, -83.9393247],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_5e7cddd06daf55d550de95a5bf5e0133 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e8144610896cfa4d9201c7cff9b15b29 = $(`<div id="html_e8144610896cfa4d9201c7cff9b15b29" style="width: 100.0%; height: 100.0%;">Rosalva</div>`)[0];
+                popup_5e7cddd06daf55d550de95a5bf5e0133.setContent(html_e8144610896cfa4d9201c7cff9b15b29);
+            
+        
+
+        circle_marker_3c5bbad46e87652e23c54e339edc391b.bindPopup(popup_5e7cddd06daf55d550de95a5bf5e0133)
+        ;
+
+        
+    
+    
+            var circle_marker_fa1b849e4245a62093320e004ea4299d = L.circleMarker(
+                [9.8501272, -83.939168],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_86625902a40a5384db2a137a3ddf985a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_87ca4d35bda73fdf61bbaaf8e71b15b6 = $(`<div id="html_87ca4d35bda73fdf61bbaaf8e71b15b6" style="width: 100.0%; height: 100.0%;">Marcelo</div>`)[0];
+                popup_86625902a40a5384db2a137a3ddf985a.setContent(html_87ca4d35bda73fdf61bbaaf8e71b15b6);
+            
+        
+
+        circle_marker_fa1b849e4245a62093320e004ea4299d.bindPopup(popup_86625902a40a5384db2a137a3ddf985a)
+        ;
+
+        
+    
+    
+            var poly_line_4b269f94bd3f57dc4c24c194d1c5b66c = L.polyline(
+                [[9.8469095, -83.9333364], [9.8501272, -83.939168]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_e3b627f2d3792b5ae97ac2b54de31589 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a5709544556bd80a0798452d743cc4c = $(`<div id="html_6a5709544556bd80a0798452d743cc4c" style="width: 100.0%; height: 100.0%;">Recomendación: Josefina → Marcelo<br/>Razón: proximidad<br/>Peso: 9</div>`)[0];
+                popup_e3b627f2d3792b5ae97ac2b54de31589.setContent(html_6a5709544556bd80a0798452d743cc4c);
+            
+        
+
+        poly_line_4b269f94bd3f57dc4c24c194d1c5b66c.bindPopup(popup_e3b627f2d3792b5ae97ac2b54de31589)
+        ;
+
+        
+    
+    
+            var circle_marker_80729d6e10fff7a5b1c58dc58110764c = L.circleMarker(
+                [9.8469095, -83.9333364],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_4da4eeff74ddd39c4781e152f72af219 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca182cdb927c114aabf354a3e7fee33a = $(`<div id="html_ca182cdb927c114aabf354a3e7fee33a" style="width: 100.0%; height: 100.0%;">Josefina</div>`)[0];
+                popup_4da4eeff74ddd39c4781e152f72af219.setContent(html_ca182cdb927c114aabf354a3e7fee33a);
+            
+        
+
+        circle_marker_80729d6e10fff7a5b1c58dc58110764c.bindPopup(popup_4da4eeff74ddd39c4781e152f72af219)
+        ;
+
+        
+    
+    
+            var circle_marker_07d7bd5ada396f06a76383c88f365f70 = L.circleMarker(
+                [9.8501272, -83.939168],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_a9c3fa19543f41c6d6221a22a6d7c367 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41587395d9b0e6331688a680530def1f = $(`<div id="html_41587395d9b0e6331688a680530def1f" style="width: 100.0%; height: 100.0%;">Marcelo</div>`)[0];
+                popup_a9c3fa19543f41c6d6221a22a6d7c367.setContent(html_41587395d9b0e6331688a680530def1f);
+            
+        
+
+        circle_marker_07d7bd5ada396f06a76383c88f365f70.bindPopup(popup_a9c3fa19543f41c6d6221a22a6d7c367)
+        ;
+
+        
+    
+    
+            var poly_line_ac28e052282d9597978f3905fc53d1fd = L.polyline(
+                [[9.8744276, -83.9367922], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_e915abd9728535d090c96ad73e38a1bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c50ace0ba00652202349859cc376f39 = $(`<div id="html_9c50ace0ba00652202349859cc376f39" style="width: 100.0%; height: 100.0%;">Recomendación: Eugenia → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_e915abd9728535d090c96ad73e38a1bf.setContent(html_9c50ace0ba00652202349859cc376f39);
+            
+        
+
+        poly_line_ac28e052282d9597978f3905fc53d1fd.bindPopup(popup_e915abd9728535d090c96ad73e38a1bf)
+        ;
+
+        
+    
+    
+            var circle_marker_d14a2242f171d5d09904b29204581dfb = L.circleMarker(
+                [9.8744276, -83.9367922],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_3cf1c23bcb839c72ee737039083b94ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65617afb5815843384ecc79e197cbc9b = $(`<div id="html_65617afb5815843384ecc79e197cbc9b" style="width: 100.0%; height: 100.0%;">Eugenia</div>`)[0];
+                popup_3cf1c23bcb839c72ee737039083b94ed.setContent(html_65617afb5815843384ecc79e197cbc9b);
+            
+        
+
+        circle_marker_d14a2242f171d5d09904b29204581dfb.bindPopup(popup_3cf1c23bcb839c72ee737039083b94ed)
+        ;
+
+        
+    
+    
+            var circle_marker_e48ce856e3339d93cab3298bf8ea8599 = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_b0b5d8cb56eae1677c7cfad740ef9d43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6bed0162902e6c268c0d26078fcd58a7 = $(`<div id="html_6bed0162902e6c268c0d26078fcd58a7" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_b0b5d8cb56eae1677c7cfad740ef9d43.setContent(html_6bed0162902e6c268c0d26078fcd58a7);
+            
+        
+
+        circle_marker_e48ce856e3339d93cab3298bf8ea8599.bindPopup(popup_b0b5d8cb56eae1677c7cfad740ef9d43)
+        ;
+
+        
+    
+    
+            var poly_line_5a3638458d8e3abf764480ddd3bc2a85 = L.polyline(
+                [[9.8440476, -83.9162575], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_e73e021a10fa98e97d814b0dc0abb17e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7393d5aa0b84d87893f659da110aa6f7 = $(`<div id="html_7393d5aa0b84d87893f659da110aa6f7" style="width: 100.0%; height: 100.0%;">Recomendación: Augusto → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_e73e021a10fa98e97d814b0dc0abb17e.setContent(html_7393d5aa0b84d87893f659da110aa6f7);
+            
+        
+
+        poly_line_5a3638458d8e3abf764480ddd3bc2a85.bindPopup(popup_e73e021a10fa98e97d814b0dc0abb17e)
+        ;
+
+        
+    
+    
+            var circle_marker_fa4abec6425d650712501121046121e6 = L.circleMarker(
+                [9.8440476, -83.9162575],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_0e90031eb5c6a9fd1ea3c012b5dc49fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_26d089f65ec25b574b3a5141cbcf52fd = $(`<div id="html_26d089f65ec25b574b3a5141cbcf52fd" style="width: 100.0%; height: 100.0%;">Augusto</div>`)[0];
+                popup_0e90031eb5c6a9fd1ea3c012b5dc49fc.setContent(html_26d089f65ec25b574b3a5141cbcf52fd);
+            
+        
+
+        circle_marker_fa4abec6425d650712501121046121e6.bindPopup(popup_0e90031eb5c6a9fd1ea3c012b5dc49fc)
+        ;
+
+        
+    
+    
+            var circle_marker_cc884f94ca869b6adae8a4005984cb1c = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_8a0aac247927648678b103eb16838152 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a3170fc58935641fb0f083182f00c7c = $(`<div id="html_2a3170fc58935641fb0f083182f00c7c" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_8a0aac247927648678b103eb16838152.setContent(html_2a3170fc58935641fb0f083182f00c7c);
+            
+        
+
+        circle_marker_cc884f94ca869b6adae8a4005984cb1c.bindPopup(popup_8a0aac247927648678b103eb16838152)
+        ;
+
+        
+    
+    
+            var poly_line_1f1430b4b32d7188a1a1b3e5b833764d = L.polyline(
+                [[9.8718612, -83.9054361], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_87daade6c4ee05a22c6c8b9dc32b6d75 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4539f2ea27694fc8af5678a2f203e72b = $(`<div id="html_4539f2ea27694fc8af5678a2f203e72b" style="width: 100.0%; height: 100.0%;">Recomendación: Demetrio → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_87daade6c4ee05a22c6c8b9dc32b6d75.setContent(html_4539f2ea27694fc8af5678a2f203e72b);
+            
+        
+
+        poly_line_1f1430b4b32d7188a1a1b3e5b833764d.bindPopup(popup_87daade6c4ee05a22c6c8b9dc32b6d75)
+        ;
+
+        
+    
+    
+            var circle_marker_bdeeedebc7cb60f2747c43169f7fe308 = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_c7ed2dcc1e638b211726f7c66244ff1b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54bfbd6def3ed63010cf84e121e0da8b = $(`<div id="html_54bfbd6def3ed63010cf84e121e0da8b" style="width: 100.0%; height: 100.0%;">Demetrio</div>`)[0];
+                popup_c7ed2dcc1e638b211726f7c66244ff1b.setContent(html_54bfbd6def3ed63010cf84e121e0da8b);
+            
+        
+
+        circle_marker_bdeeedebc7cb60f2747c43169f7fe308.bindPopup(popup_c7ed2dcc1e638b211726f7c66244ff1b)
+        ;
+
+        
+    
+    
+            var circle_marker_1fc937f3080f6c22b0b3b8b65dc6b836 = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_47f502743202039ea9521b74f80ce1c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e42518ed0e1fb186a733327d9510e62 = $(`<div id="html_0e42518ed0e1fb186a733327d9510e62" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_47f502743202039ea9521b74f80ce1c0.setContent(html_0e42518ed0e1fb186a733327d9510e62);
+            
+        
+
+        circle_marker_1fc937f3080f6c22b0b3b8b65dc6b836.bindPopup(popup_47f502743202039ea9521b74f80ce1c0)
+        ;
+
+        
+    
+    
+            var poly_line_087c831b77fe0eb69664c62766a302cc = L.polyline(
+                [[9.8634527, -83.9314896], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_4c3a6f1265b2c89db26953b116c58ce1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_43d766f9e1efc8b17ec5d08bd90f90d2 = $(`<div id="html_43d766f9e1efc8b17ec5d08bd90f90d2" style="width: 100.0%; height: 100.0%;">Recomendación: Rolando → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_4c3a6f1265b2c89db26953b116c58ce1.setContent(html_43d766f9e1efc8b17ec5d08bd90f90d2);
+            
+        
+
+        poly_line_087c831b77fe0eb69664c62766a302cc.bindPopup(popup_4c3a6f1265b2c89db26953b116c58ce1)
+        ;
+
+        
+    
+    
+            var circle_marker_3545089d7ab796daf3f4765d7b9a3280 = L.circleMarker(
+                [9.8634527, -83.9314896],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_1bc9d66672b805c7e1d1b44a3e794462 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cab645f79fe89dc7c03c764aa272f9c6 = $(`<div id="html_cab645f79fe89dc7c03c764aa272f9c6" style="width: 100.0%; height: 100.0%;">Rolando</div>`)[0];
+                popup_1bc9d66672b805c7e1d1b44a3e794462.setContent(html_cab645f79fe89dc7c03c764aa272f9c6);
+            
+        
+
+        circle_marker_3545089d7ab796daf3f4765d7b9a3280.bindPopup(popup_1bc9d66672b805c7e1d1b44a3e794462)
+        ;
+
+        
+    
+    
+            var circle_marker_754a1b4fa3d703dbe5469d315dd32fb6 = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_fcab046063eae082f00b8c5fb511be5e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5c7769543cddc9ee6f32b877b0edf2d = $(`<div id="html_c5c7769543cddc9ee6f32b877b0edf2d" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_fcab046063eae082f00b8c5fb511be5e.setContent(html_c5c7769543cddc9ee6f32b877b0edf2d);
+            
+        
+
+        circle_marker_754a1b4fa3d703dbe5469d315dd32fb6.bindPopup(popup_fcab046063eae082f00b8c5fb511be5e)
+        ;
+
+        
+    
+    
+            var poly_line_88610a99037895d3fb02af54261dc803 = L.polyline(
+                [[9.8540254, -83.9193676], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_8abeee30eb214d68a218e4902c4deb6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9444fa93dab5b5421b7de45b219f1ca = $(`<div id="html_a9444fa93dab5b5421b7de45b219f1ca" style="width: 100.0%; height: 100.0%;">Recomendación: Adriana → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_8abeee30eb214d68a218e4902c4deb6d.setContent(html_a9444fa93dab5b5421b7de45b219f1ca);
+            
+        
+
+        poly_line_88610a99037895d3fb02af54261dc803.bindPopup(popup_8abeee30eb214d68a218e4902c4deb6d)
+        ;
+
+        
+    
+    
+            var circle_marker_3fb45ecfedaac946f56d4d69a6f5e841 = L.circleMarker(
+                [9.8540254, -83.9193676],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_02cb4ec534e3b69fc8e6a8e0c1f6614d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6edb429d47e213e014c1770d09dfdd67 = $(`<div id="html_6edb429d47e213e014c1770d09dfdd67" style="width: 100.0%; height: 100.0%;">Adriana</div>`)[0];
+                popup_02cb4ec534e3b69fc8e6a8e0c1f6614d.setContent(html_6edb429d47e213e014c1770d09dfdd67);
+            
+        
+
+        circle_marker_3fb45ecfedaac946f56d4d69a6f5e841.bindPopup(popup_02cb4ec534e3b69fc8e6a8e0c1f6614d)
+        ;
+
+        
+    
+    
+            var circle_marker_04dbdd98625f6e64b924ed8245fa998a = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_f45ce9f3aba4f89c9279ee87a635c024 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7314c6b8d9f5ccaab2226d93f50944ff = $(`<div id="html_7314c6b8d9f5ccaab2226d93f50944ff" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_f45ce9f3aba4f89c9279ee87a635c024.setContent(html_7314c6b8d9f5ccaab2226d93f50944ff);
+            
+        
+
+        circle_marker_04dbdd98625f6e64b924ed8245fa998a.bindPopup(popup_f45ce9f3aba4f89c9279ee87a635c024)
+        ;
+
+        
+    
+    
+            var poly_line_8ca009a152bb6abd9bdb1d7bc6ca3d7e = L.polyline(
+                [[9.8607966, -83.917046], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_a486a5e24f7eadb57d6ce267d5d71cf5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3237b71675a60cc497aae634703fd1f3 = $(`<div id="html_3237b71675a60cc497aae634703fd1f3" style="width: 100.0%; height: 100.0%;">Recomendación: Mireia → Estefanía<br/>Razón: ocupacion_similar<br/>Peso: 8</div>`)[0];
+                popup_a486a5e24f7eadb57d6ce267d5d71cf5.setContent(html_3237b71675a60cc497aae634703fd1f3);
+            
+        
+
+        poly_line_8ca009a152bb6abd9bdb1d7bc6ca3d7e.bindPopup(popup_a486a5e24f7eadb57d6ce267d5d71cf5)
+        ;
+
+        
+    
+    
+            var circle_marker_65e4d3e276461845cdb0d9f0fd2534e5 = L.circleMarker(
+                [9.8607966, -83.917046],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_e40f12ddf779896c3e393a691cb48e86 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f036782221940e75154ee6e615f010f4 = $(`<div id="html_f036782221940e75154ee6e615f010f4" style="width: 100.0%; height: 100.0%;">Mireia</div>`)[0];
+                popup_e40f12ddf779896c3e393a691cb48e86.setContent(html_f036782221940e75154ee6e615f010f4);
+            
+        
+
+        circle_marker_65e4d3e276461845cdb0d9f0fd2534e5.bindPopup(popup_e40f12ddf779896c3e393a691cb48e86)
+        ;
+
+        
+    
+    
+            var circle_marker_6eee35038ef2008396e2dd43f52ecfff = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_89763afa3a15da7ec59db1e574e9d71b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6f2fdec68e8e89d297be5be3e8efe9f = $(`<div id="html_d6f2fdec68e8e89d297be5be3e8efe9f" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_89763afa3a15da7ec59db1e574e9d71b.setContent(html_d6f2fdec68e8e89d297be5be3e8efe9f);
+            
+        
+
+        circle_marker_6eee35038ef2008396e2dd43f52ecfff.bindPopup(popup_89763afa3a15da7ec59db1e574e9d71b)
+        ;
+
+        
+    
+    
+            var poly_line_b2aa7afa06eae45c5124f94924d9043a = L.polyline(
+                [[9.8718612, -83.9054361], [9.8718612, -83.9054361]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_2b8c95de54ad8e0e5eec6748ed89c5a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06bdc39274bb63763876bf296968d439 = $(`<div id="html_06bdc39274bb63763876bf296968d439" style="width: 100.0%; height: 100.0%;">Recomendación: Demetrio → Estefanía<br/>Razón: proximidad<br/>Peso: 10</div>`)[0];
+                popup_2b8c95de54ad8e0e5eec6748ed89c5a8.setContent(html_06bdc39274bb63763876bf296968d439);
+            
+        
+
+        poly_line_b2aa7afa06eae45c5124f94924d9043a.bindPopup(popup_2b8c95de54ad8e0e5eec6748ed89c5a8)
+        ;
+
+        
+    
+    
+            var circle_marker_a45fc50a12a89ed8b87be3aa8feac895 = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_d5fa5c9d8fe5e77a50d95c8753464578 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5cfde1739f56aff46c05408bb985eb5 = $(`<div id="html_b5cfde1739f56aff46c05408bb985eb5" style="width: 100.0%; height: 100.0%;">Demetrio</div>`)[0];
+                popup_d5fa5c9d8fe5e77a50d95c8753464578.setContent(html_b5cfde1739f56aff46c05408bb985eb5);
+            
+        
+
+        circle_marker_a45fc50a12a89ed8b87be3aa8feac895.bindPopup(popup_d5fa5c9d8fe5e77a50d95c8753464578)
+        ;
+
+        
+    
+    
+            var circle_marker_86e3df831814558a6e6691b72db328fc = L.circleMarker(
+                [9.8718612, -83.9054361],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_847049167deda30c906448f243b38159);
+        
+    
+        var popup_09e1d29e0858596597ecdf3594739250 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9eb904d739cc8c62fc90c66e4b916751 = $(`<div id="html_9eb904d739cc8c62fc90c66e4b916751" style="width: 100.0%; height: 100.0%;">Estefanía</div>`)[0];
+                popup_09e1d29e0858596597ecdf3594739250.setContent(html_9eb904d739cc8c62fc90c66e4b916751);
+            
+        
+
+        circle_marker_86e3df831814558a6e6691b72db328fc.bindPopup(popup_09e1d29e0858596597ecdf3594739250)
+        ;
+
+        
+    
+</script>
+</html>

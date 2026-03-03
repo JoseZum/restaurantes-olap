@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_312fe5b371102fb21dad9ae9dc4a5c62 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style='position: fixed; 
+                    bottom: 50px; left: 50px; width: 320px; height: 160px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px;
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;'>
+        <h4 style='margin-top:0; color: #2E8B57;'>Información de Entrega Neo4j</h4>
+        <p><b>Cliente:</b> Carmelo</p>
+        <p><b>Restaurante:</b> Restaurante Consultoría Losada y asociados S.Com.</p>
+        <p><b>Distancia:</b> 3.04 km</p>
+        <p><b>Tiempo estimado:</b> 6.1 min</p>
+        <p><b>Método:</b> Neo4j OSM Conectado</p>
+        <p><b>Segmentos:</b> 1</p>
+        <p><b>Datos:</b> Neo4j OSM Reales</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_312fe5b371102fb21dad9ae9dc4a5c62" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_312fe5b371102fb21dad9ae9dc4a5c62 = L.map(
+                "map_312fe5b371102fb21dad9ae9dc4a5c62",
+                {
+                    center: [9.86101485, -83.92971125],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cb7d666b1f37598dc33f006cd7e11bd6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cb7d666b1f37598dc33f006cd7e11bd6.addTo(map_312fe5b371102fb21dad9ae9dc4a5c62);
+        
+    
+            var poly_line_6fc8f7fdfc2361550cfa1f41f9d1f206 = L.polyline(
+                [[9.8510209, -83.9391442], [9.8710088, -83.9202783]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_312fe5b371102fb21dad9ae9dc4a5c62);
+        
+    
+        var popup_67e40ffde28188233528c53b446f9864 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_092330882c212d4ff84274cf0d48cb25 = $(`<div id="html_092330882c212d4ff84274cf0d48cb25" style="width: 100.0%; height: 100.0%;">Ruta Neo4j - 3.04 km (Método: Neo4j_Fallback_Direct)</div>`)[0];
+                popup_67e40ffde28188233528c53b446f9864.setContent(html_092330882c212d4ff84274cf0d48cb25);
+            
+        
+
+        poly_line_6fc8f7fdfc2361550cfa1f41f9d1f206.bindPopup(popup_67e40ffde28188233528c53b446f9864)
+        ;
+
+        
+    
+    
+            var marker_6163b8cd4b3db4c7c803b2df79819030 = L.marker(
+                [9.8510209, -83.9391442],
+                {
+}
+            ).addTo(map_312fe5b371102fb21dad9ae9dc4a5c62);
+        
+    
+            var icon_838ab3631070a5077f78fee0ac1f5b58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b2afc4840528d558e304e9db2a0488d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4d82ac885b8ae88acd2e5794669dad2 = $(`<div id="html_c4d82ac885b8ae88acd2e5794669dad2" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Restaurante Consultoría Losada y asociados S.Com.</h4>                 <p><b>ID:</b> 3</p>                 <p><b>Coordenadas:</b> 9.851021, -83.939144</p>                 <p><b>Método:</b> Neo4j_Fallback_Direct</p>             </div>             </div>`)[0];
+                popup_5b2afc4840528d558e304e9db2a0488d.setContent(html_c4d82ac885b8ae88acd2e5794669dad2);
+            
+        
+
+        marker_6163b8cd4b3db4c7c803b2df79819030.bindPopup(popup_5b2afc4840528d558e304e9db2a0488d)
+        ;
+
+        
+    
+    
+            marker_6163b8cd4b3db4c7c803b2df79819030.bindTooltip(
+                `<div>
+                     ORIGEN: Restaurante Consultoría Losada y asociados S.Com.
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6163b8cd4b3db4c7c803b2df79819030.setIcon(icon_838ab3631070a5077f78fee0ac1f5b58);
+            
+    
+            var marker_f7afeabd740ea1904cfa4c2ce062944f = L.marker(
+                [9.8710088, -83.9202783],
+                {
+}
+            ).addTo(map_312fe5b371102fb21dad9ae9dc4a5c62);
+        
+    
+            var icon_88a44e87ee110b616801d0d203c083f3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b9046b75ad70ed10b37320e43d573ec0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cdeb30691b106d35f6aea1b53efa2009 = $(`<div id="html_cdeb30691b106d35f6aea1b53efa2009" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Cliente: Carmelo</h4>                 <p><b>ID:</b> 11</p>                 <p><b>Coordenadas:</b> 9.871009, -83.920278</p>                 <p><b>Segmentos:</b> 1</p>             </div>             </div>`)[0];
+                popup_b9046b75ad70ed10b37320e43d573ec0.setContent(html_cdeb30691b106d35f6aea1b53efa2009);
+            
+        
+
+        marker_f7afeabd740ea1904cfa4c2ce062944f.bindPopup(popup_b9046b75ad70ed10b37320e43d573ec0)
+        ;
+
+        
+    
+    
+            marker_f7afeabd740ea1904cfa4c2ce062944f.bindTooltip(
+                `<div>
+                     DESTINO: Carmelo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f7afeabd740ea1904cfa4c2ce062944f.setIcon(icon_88a44e87ee110b616801d0d203c083f3);
+            
+</script>
+</html>

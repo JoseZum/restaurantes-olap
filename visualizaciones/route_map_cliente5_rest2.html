@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8add7352318344c772adfa7253c939eb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style='position: fixed; 
+                    bottom: 50px; left: 50px; width: 320px; height: 160px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px;
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;'>
+        <h4 style='margin-top:0; color: #2E8B57;'>Información de Entrega Neo4j</h4>
+        <p><b>Cliente:</b> Remigio</p>
+        <p><b>Restaurante:</b> Restaurante Comercializadora del Noroeste S.L.L.</p>
+        <p><b>Distancia:</b> 1.82 km</p>
+        <p><b>Tiempo estimado:</b> 3.6 min</p>
+        <p><b>Método:</b> Neo4j OSM Conectado</p>
+        <p><b>Segmentos:</b> 1</p>
+        <p><b>Datos:</b> Neo4j OSM Reales</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_8add7352318344c772adfa7253c939eb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8add7352318344c772adfa7253c939eb = L.map(
+                "map_8add7352318344c772adfa7253c939eb",
+                {
+                    center: [9.866506950000002, -83.91014635],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4f702fd15d6702f2790c79b85d00c66c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4f702fd15d6702f2790c79b85d00c66c.addTo(map_8add7352318344c772adfa7253c939eb);
+        
+    
+            var poly_line_f5f4f597a3091c090148de4cee5da14a = L.polyline(
+                [[9.8735566, -83.9143437], [9.8594573, -83.905949]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_8add7352318344c772adfa7253c939eb);
+        
+    
+        var popup_4551c4c3d94ef240abac2611f9286d20 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_648c5bbf1e04d2b84366ac489daaac2f = $(`<div id="html_648c5bbf1e04d2b84366ac489daaac2f" style="width: 100.0%; height: 100.0%;">Ruta Neo4j - 1.82 km (Método: Neo4j_Fallback_Direct)</div>`)[0];
+                popup_4551c4c3d94ef240abac2611f9286d20.setContent(html_648c5bbf1e04d2b84366ac489daaac2f);
+            
+        
+
+        poly_line_f5f4f597a3091c090148de4cee5da14a.bindPopup(popup_4551c4c3d94ef240abac2611f9286d20)
+        ;
+
+        
+    
+    
+            var marker_9ae012b4a31be84f3ee773e8883102dd = L.marker(
+                [9.8735566, -83.9143437],
+                {
+}
+            ).addTo(map_8add7352318344c772adfa7253c939eb);
+        
+    
+            var icon_74916f7e297f658753942e19851049b8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0499e67224c478bcd7c7eb596d90b542 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f960034acb3fe9614e72ff0415d06f0c = $(`<div id="html_f960034acb3fe9614e72ff0415d06f0c" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Restaurante Comercializadora del Noroeste S.L.L.</h4>                 <p><b>ID:</b> 2</p>                 <p><b>Coordenadas:</b> 9.873557, -83.914344</p>                 <p><b>Método:</b> Neo4j_Fallback_Direct</p>             </div>             </div>`)[0];
+                popup_0499e67224c478bcd7c7eb596d90b542.setContent(html_f960034acb3fe9614e72ff0415d06f0c);
+            
+        
+
+        marker_9ae012b4a31be84f3ee773e8883102dd.bindPopup(popup_0499e67224c478bcd7c7eb596d90b542)
+        ;
+
+        
+    
+    
+            marker_9ae012b4a31be84f3ee773e8883102dd.bindTooltip(
+                `<div>
+                     ORIGEN: Restaurante Comercializadora del Noroeste S.L.L.
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9ae012b4a31be84f3ee773e8883102dd.setIcon(icon_74916f7e297f658753942e19851049b8);
+            
+    
+            var marker_6a95f895fb1ecee37a123a3fcd9a1f9a = L.marker(
+                [9.8594573, -83.905949],
+                {
+}
+            ).addTo(map_8add7352318344c772adfa7253c939eb);
+        
+    
+            var icon_57f15c9bfa397f77e4d9652a3040f622 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b70e5a494736018c89f809a3b0710001 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_be7a15b6a981b22f390c6d23887b651d = $(`<div id="html_be7a15b6a981b22f390c6d23887b651d" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Cliente: Remigio</h4>                 <p><b>ID:</b> 5</p>                 <p><b>Coordenadas:</b> 9.859457, -83.905949</p>                 <p><b>Segmentos:</b> 1</p>             </div>             </div>`)[0];
+                popup_b70e5a494736018c89f809a3b0710001.setContent(html_be7a15b6a981b22f390c6d23887b651d);
+            
+        
+
+        marker_6a95f895fb1ecee37a123a3fcd9a1f9a.bindPopup(popup_b70e5a494736018c89f809a3b0710001)
+        ;
+
+        
+    
+    
+            marker_6a95f895fb1ecee37a123a3fcd9a1f9a.bindTooltip(
+                `<div>
+                     DESTINO: Remigio
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6a95f895fb1ecee37a123a3fcd9a1f9a.setIcon(icon_57f15c9bfa397f77e4d9652a3040f622);
+            
+</script>
+</html>

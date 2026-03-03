@@ -1,0 +1,201 @@
+id,nombre,direccion,telefono,capacidad,categoria_local,lat,lon
+1,Solorio S.A.,"Periférico Norte Chapa 970 Interior 688, Cartago, CR",1-023-516-4319x8045,76,casual,9.861415,-83.92935
+2,Domínguez-Saldivar e Hijos,"Privada Panamá 790 Edif. 195 , Depto. 401, Cartago, CR",1-913-946-6680x4617,32,fast-food,9.865372,-83.944456
+3,Guillen-Llamas,"Retorno Oquendo 103 Interior 260, Cartago, CR",+34(3)4164374325,41,fast-food,9.872956,-83.934904
+4,Ordóñez-Montero,"Andador Sur Gálvez 688 Edif. 991 , Depto. 961, Cartago, CR",1-776-114-6127x33047,70,fast-food,9.851204,-83.938962
+5,Club Malave-Pabón,"Continuación Namibia 325 Interior 341, Cartago, CR",(620)504-7562x123,43,fast-food,9.881655,-83.896469
+6,Proyectos Valencia y Serrano,"Calle Norte Abrego 136 Interior 175, Cartago, CR",(411)694-6832x3643,37,gourmet,9.851761,-83.906369
+7,"Club Guillen, Arteaga y Zarate","Continuación Irlanda 535 Edif. 126 , Depto. 295, Cartago, CR",+44(4)3499209431,115,casual,9.866282,-83.93413
+8,Botello-Samaniego S. R.L. de C.V.,"Calzada Niger 138 Interior 734, Cartago, CR",(671)065-6487x8195,120,casual,9.857583,-83.903934
+9,Despacho Vaca-Collado,"Boulevard Norte Gonzales 240 589, Cartago, CR",1-784-207-3423x2767,65,casual,9.859189,-83.912174
+10,"Burgos, Bravo y Salcedo","Viaducto India 271 768, Cartago, CR",874.467.9233x5669,33,fast-food,9.862256,-83.935217
+11,Corporacin Rodríguez y Olivas,"Circuito Zacatecas 950 Interior 659, Cartago, CR",1-191-286-2968,77,casual,9.871721,-83.934755
+12,Industrias Martínez-Aguilera,"Circunvalación Guanajuato 753 Edif. 210 , Depto. 783, Cartago, CR",988-429-6528x020,85,fast-food,9.869791,-83.912467
+13,Delgado y Vela S.A. de C.V.,"Ampliación Aguascalientes 236 Interior 245, Cartago, CR",06910766691,94,fast-food,9.86577,-83.926619
+14,"Corporacin Partida, Gamez y Menéndez","Pasaje Kirguistán 112 Edif. 424 , Depto. 988, Cartago, CR",171-705-3211,46,gourmet,9.881505,-83.933243
+15,Grupo Mojica-Vanegas,"Diagonal San Luis Potosí 557 760, Cartago, CR",966.149.4389x302,103,fast-food,9.868543,-83.907853
+16,"Industrias Rosas, Adame y Escobar","Calzada Mireles 843 371, Cartago, CR",999-025-3794,96,gourmet,9.854304,-83.926123
+17,López S.A.,"Retorno Carrera 663 Edif. 997 , Depto. 275, Cartago, CR",000.979.4737,91,gourmet,9.871738,-83.911856
+18,Despacho Núñez-Soto,"Peatonal México 867 Edif. 106 , Depto. 306, Cartago, CR",(121)906-9339x90350,74,fast-food,9.867326,-83.900331
+19,"Barrios, Tirado y Lucero","Diagonal Sur Barela 835 Interior 237, Cartago, CR",+96(0)6910844921,53,casual,9.84531,-83.913157
+20,Laboratorios Escalante y Godínez,"Continuación Malasia 054 483, Cartago, CR",+78(9)6112927143,117,gourmet,9.883341,-83.934282
+21,Montez-Navarrete,"Privada Norte Olmos 294 Interior 749, Cartago, CR",(760)608-5851x6919,96,casual,9.845499,-83.938833
+22,Beltrán-Burgos,"Continuación Vietman 861 Edif. 650 , Depto. 721, Cartago, CR",(918)319-0580x55721,88,gourmet,9.874442,-83.932531
+23,Laboratorios Durán-Cantú,"Calzada Sarabia 691 Interior 776, Cartago, CR",1-818-503-1236,90,fast-food,9.854786,-83.912663
+24,Ureña-Leal,"Viaducto Campos 382 Interior 615, Cartago, CR",021-618-0457,107,fast-food,9.882289,-83.914351
+25,Zapata y Quesada A.C.,"Privada Côte d'Ivoire 848 Edif. 817 , Depto. 565, Cartago, CR",(213)632-1104,119,gourmet,9.872929,-83.904967
+26,Gastélum y Casillas S.C.,"Corredor Borrego 065 486, Cartago, CR",(291)846-0244x594,79,gourmet,9.881021,-83.911726
+27,Ceja y Ibarra S.C.,"Ampliación Norte Briseño 555 Edif. 663 , Depto. 181, Cartago, CR",1-982-870-8497x167,57,fast-food,9.865106,-83.94118
+28,Pedraza-Cisneros e Hijos,"Calle Norte Gálvez 611 Interior 262, Cartago, CR",551.534.8669x56634,87,gourmet,9.880646,-83.912435
+29,Ruiz y Juárez S.A. de C.V.,"Privada Norte Bustos 263 Edif. 930 , Depto. 488, Cartago, CR",990.603.8741,114,gourmet,9.86022,-83.898135
+30,Centeno-Negrete y Asociados,"Pasaje México 709 260, Cartago, CR",411-655-4357,65,gourmet,9.855043,-83.905877
+31,Industrias Linares y Fonseca,"Periférico Yucatán 425 Interior 002, Cartago, CR",04190944373,92,fast-food,9.863422,-83.922293
+32,"Reynoso, del Río y Venegas","Circuito Casares 152 Interior 219, Cartago, CR",241.797.7170,73,gourmet,9.859575,-83.902826
+33,Narváez y Leyva y Asociados,"Callejón Sur Batista 766 Edif. 318 , Depto. 490, Cartago, CR",656-231-1644,78,casual,9.845029,-83.921306
+34,Burgos y Frías e Hijos,"Retorno Libia 220 Edif. 741 , Depto. 824, Cartago, CR",+71(8)7126269924,54,fast-food,9.859775,-83.916592
+35,Club Razo-Vera,"Prolongación Norte Sierra 701 Edif. 619 , Depto. 255, Cartago, CR",+31(2)7855050641,34,gourmet,9.87659,-83.9035
+36,Casas-Garibay,"Viaducto Guerrero 802 Edif. 997 , Depto. 100, Cartago, CR",1-833-986-2909,109,casual,9.873516,-83.942425
+37,Proyectos Arce-Rael,"Ampliación Reino Unido de Gran Bretaña e Irlanda del Norte 202 Edif. 078 , Depto. 195, Cartago, CR",(436)206-2944x850,83,gourmet,9.879367,-83.914315
+38,Mora y Olivares S.C.,"Continuación Munguía 938 Interior 163, Cartago, CR",773.519.1840,68,gourmet,9.874634,-83.939766
+39,Proyectos González-Rico,"Cerrada Liechtenstein 299 Edif. 793 , Depto. 464, Cartago, CR",298.881.8171x9230,120,casual,9.868019,-83.923072
+40,Rangel-de la Torre e Hijos,"Calle Saldaña 516 Edif. 839 , Depto. 806, Cartago, CR",1-424-344-7766x14462,114,casual,9.866557,-83.907247
+41,Arreola-Colunga,"Calle Ureña 140 255, Cartago, CR",860.952.5363,44,fast-food,9.850433,-83.906836
+42,Vallejo A.C.,"Diagonal Nayarit 775 Interior 694, Cartago, CR",+81(2)1092767167,80,fast-food,9.869834,-83.917097
+43,Proyectos Posada y Soria,"Continuación Sur Guerrero 828 724, Cartago, CR",111.003.1559,73,casual,9.865758,-83.92391
+44,Villanueva-Cordero S.A. de C.V.,"Avenida Adame 086 499, Cartago, CR",679-940-8457,111,gourmet,9.877935,-83.902344
+45,Vergara S.C.,"Ampliación Aponte 457 Edif. 512 , Depto. 603, Cartago, CR",1-277-152-8137,69,casual,9.878955,-83.91346
+46,Despacho Valles y García,"Diagonal Marruecos 091 Interior 785, Cartago, CR",210.747.7943,55,gourmet,9.874364,-83.934642
+47,Laboratorios Rosado-Luna,"Pasaje Casárez 816 897, Cartago, CR",(777)859-9966,34,gourmet,9.879526,-83.907607
+48,León S.C.,"Circunvalación Norte Valencia 612 456, Cartago, CR",1-362-427-1516,103,fast-food,9.866392,-83.907008
+49,Corporacin Farías y Maya,"Peatonal Croacia 963 Interior 924, Cartago, CR",+79(3)4197862038,78,gourmet,9.866743,-83.900474
+50,Laboratorios Ortega y Ponce,"Viaducto Eslovaquia 475 Interior 668, Cartago, CR",518-799-5102x05432,94,gourmet,9.866806,-83.943425
+51,Hernández y Cervantes S.A. de C.V.,"Viaducto Djibouti 087 Interior 100, Cartago, CR",662.094.6218x780,62,gourmet,9.871933,-83.931734
+52,Corporacin Rosas-Caballero,"Calzada Liberia 531 Interior 514, Cartago, CR",1-258-741-9233x76027,120,fast-food,9.868965,-83.935566
+53,Club Frías-Matías,"Calzada Sur Murillo 394 Interior 498, Cartago, CR",217.758.1702x02297,112,fast-food,9.846046,-83.909872
+54,Batista y Matías e Hijos,"Pasaje Tamaulipas 781 721, Cartago, CR",554.908.4975,39,fast-food,9.85926,-83.917215
+55,"Laboratorios Aguayo, Leal y Villagómez","Calle Veracruz de Ignacio de la Llave 011 Interior 327, Cartago, CR",(052)104-5633,101,casual,9.875935,-83.897248
+56,"Díaz, Paz y Carrera","Andador Azerbaiyán 693 872, Cartago, CR",+67(6)6662823276,47,casual,9.850028,-83.934493
+57,"Corporacin Trujillo, Mares y Cantú","Privada Báez 259 Edif. 220 , Depto. 411, Cartago, CR",599-890-9244,48,casual,9.861042,-83.944199
+58,Saldaña y Gastélum S.A.,"Privada Zacatecas 834 Interior 944, Cartago, CR",+15(5)2564383716,84,fast-food,9.86419,-83.919946
+59,Riojas y Asociados,"Calzada Salgado 742 Edif. 201 , Depto. 794, Cartago, CR",1-329-892-0537x04460,64,casual,9.881355,-83.914697
+60,"Proyectos Saldaña, Guzmán y Almanza","Calzada Norte Ledesma 801 Interior 512, Cartago, CR",(858)971-6291,54,casual,9.863626,-83.926777
+61,Rubio-Negrón,"Andador Lituania 753 Edif. 213 , Depto. 109, Cartago, CR",(015)124-6232,45,gourmet,9.869769,-83.905462
+62,Adame A.C.,"Ampliación Ibarra 640 962, Cartago, CR",268.873.4710x313,52,casual,9.864989,-83.899338
+63,Cervantes-Madrigal,"Prolongación Puebla 949 492, Cartago, CR",03667117679,89,gourmet,9.873673,-83.920144
+64,Corporacin Miramontes y Munguía,"Calle Bosnia y Herzegovina 584 761, Cartago, CR",241.861.9694,30,casual,9.845236,-83.910106
+65,Despacho Bravo-Puente,"Continuación Yucatán 998 994, Cartago, CR",695-018-9591,104,casual,9.870045,-83.94384
+66,Regalado y Aragón S. R.L. de C.V.,"Andador Acuña 533 607, Cartago, CR",1-031-744-0183x440,37,casual,9.882871,-83.927656
+67,Saavedra-Olivera,"Callejón Liechtenstein 274 Edif. 150 , Depto. 036, Cartago, CR",337-785-8397x1706,67,gourmet,9.861635,-83.90799
+68,Tamayo A.C.,"Continuación Nayarit 876 582, Cartago, CR",(947)115-7226x84544,103,gourmet,9.844622,-83.914636
+69,Grupo Mora-Laboy,"Prolongación Veracruz de Ignacio de la Llave 451 Edif. 343 , Depto. 043, Cartago, CR",613.649.8184,104,fast-food,9.857755,-83.902565
+70,"Muñoz, Perales y Meraz","Circunvalación Munguía 105 Interior 480, Cartago, CR",1-491-383-2455x4241,35,fast-food,9.875709,-83.911252
+71,Quiñónez-Lara,"Boulevard Jalisco 307 748, Cartago, CR",(257)583-9819x5739,39,fast-food,9.87191,-83.906737
+72,"Reséndez, Padrón y Salas","Eje vial Coahuila de Zaragoza 157 639, Cartago, CR",492-965-9795,98,gourmet,9.860095,-83.936224
+73,Club Altamirano-Alcántar,"Calzada Ecuador 135 Interior 748, Cartago, CR",1-366-631-4128x95292,107,gourmet,9.864824,-83.935152
+74,Laboratorios Peres-Ojeda,"Circunvalación Montenegro 607 Interior 141, Cartago, CR",251.241.3720x157,107,casual,9.850671,-83.898939
+75,"Bernal, Merino y Longoria","Corredor Raya 420 500, Cartago, CR",1-517-139-6583x1091,95,fast-food,9.86871,-83.911439
+76,Gutiérrez-Martínez S.A. de C.V.,"Retorno Calderón 532 Interior 505, Cartago, CR",+65(4)3776371457,67,gourmet,9.869893,-83.918219
+77,Ramos-Rico y Asociados,"Privada Sur Márquez 112 094, Cartago, CR",(535)066-1510,31,fast-food,9.857877,-83.923611
+78,"Valdez, Cavazos y Orellana","Andador Campeche 424 Interior 098, Cartago, CR",04311300680,84,casual,9.868439,-83.933686
+79,Industrias Rosas y Posada,"Viaducto Guinea Ecuatorial 402 831, Cartago, CR",454-735-6169x1753,58,casual,9.881852,-83.931241
+80,"Despacho Villareal, Santana y Ibarra","Boulevard Norte de Jesús 793 Interior 017, Cartago, CR",1-448-247-0250x66315,75,casual,9.873077,-83.920007
+81,Arce-Mondragón S. R.L. de C.V.,"Avenida Yucatán 170 Interior 094, Cartago, CR",969.755.5930x74489,75,fast-food,9.880911,-83.921082
+82,Corporacin Alonso-Flórez,"Prolongación Sur Velasco 422 Interior 276, Cartago, CR",(272)581-0709,33,gourmet,9.854297,-83.941436
+83,Ayala A.C.,"Diagonal San Luis Potosí 566 711, Cartago, CR",128-668-8815,56,casual,9.8679,-83.915989
+84,"Proyectos Valentín, Orellana y Candelaria","Corredor Bustos 622 Interior 235, Cartago, CR",224.118.7554x062,39,fast-food,9.878159,-83.932821
+85,"Grupo Santana, Bañuelos y Ojeda","Pasaje Norte Lozano 724 252, Cartago, CR",(987)402-3783x32156,40,fast-food,9.844495,-83.926606
+86,Cabán-Venegas,"Viaducto Swazilandia 226 329, Cartago, CR",(010)374-5005x7544,87,casual,9.883153,-83.908253
+87,Arevalo-Quiñones,"Prolongación Guanajuato 635 570, Cartago, CR",+67(0)1851165242,84,casual,9.875802,-83.937908
+88,Venegas S.A. de C.V.,"Andador Nueva Zelandia 164 447, Cartago, CR",111-468-2221,111,gourmet,9.860175,-83.902338
+89,"Aguilera, Ramos y Medina","Peatonal Mercado 017 Edif. 118 , Depto. 485, Cartago, CR",1-330-730-8641,58,gourmet,9.875642,-83.915312
+90,Alemán y Mejía S.A. de C.V.,"Viaducto Sonora 639 Interior 825, Cartago, CR",(283)088-8274,45,gourmet,9.850787,-83.934447
+91,"Salinas, Montalvo y Villarreal","Ampliación Norte Velázquez 626 074, Cartago, CR",+49(6)5552856898,96,casual,9.855152,-83.941686
+92,"Despacho Laboy, Cadena y Chávez","Cerrada Reséndez 436 Interior 880, Cartago, CR",223.019.8954x32319,45,casual,9.851182,-83.911837
+93,Herrera y Acevedo S. R.L. de C.V.,"Privada Armas 093 Interior 492, Cartago, CR",(762)833-0188,119,gourmet,9.862037,-83.932253
+94,Salcido-Anaya y Asociados,"Calzada Colunga 702 Edif. 044 , Depto. 762, Cartago, CR",(989)304-6027,95,casual,9.847572,-83.902886
+95,Badillo y Aranda S.C.,"Prolongación Sur Quiñónez 147 Edif. 661 , Depto. 122, Cartago, CR",040.754.2631x52477,35,gourmet,9.854853,-83.901568
+96,Guzmán-Cantú S. R.L. de C.V.,"Calle Norte Tirado 343 Edif. 618 , Depto. 118, Cartago, CR",323.717.3041x1997,118,gourmet,9.875264,-83.914871
+97,Laboratorios Nazario-Galarza,"Avenida Sur Balderas 340 044, Cartago, CR",366.837.9622,102,gourmet,9.853816,-83.920595
+98,Toro y Chacón y Asociados,"Calle Norte Casárez 190 Edif. 088 , Depto. 737, Cartago, CR",325.017.9286,78,casual,9.874269,-83.911236
+99,Nieves S.A.,"Retorno Sur Rangel 545 725, Cartago, CR",1-153-836-0085,34,gourmet,9.872837,-83.928806
+100,Guillen-Echeverría S.C.,"Avenida Sur Altamirano 297 Edif. 006 , Depto. 960, Cartago, CR",1-564-942-0181x3249,112,fast-food,9.856615,-83.900607
+101,Bernal S.A. de C.V.,"Calzada Tlaxcala 586 Interior 011, Cartago, CR",485-096-4489x970,40,casual,9.860433,-83.94271
+102,"Gallegos, Chávez y de la Torre","Cerrada Dominicana 220 869, Cartago, CR",+28(6)9553494401,105,fast-food,9.852994,-83.909849
+103,Ocampo S.A. de C.V.,"Cerrada Sudáfrica 244 Interior 922, Cartago, CR",(922)292-4982x49260,115,fast-food,9.876191,-83.903221
+104,Delgadillo-Cervantes,"Diagonal Villanueva 545 Interior 722, Cartago, CR",(714)327-3769x257,50,gourmet,9.863675,-83.926185
+105,Despacho Pineda y de la Torre,"Pasaje Castillo 490 Interior 255, Cartago, CR",(859)699-4225x9692,67,fast-food,9.877663,-83.900242
+106,Orta-Leiva S.A. de C.V.,"Avenida Sur Rico 528 Edif. 345 , Depto. 992, Cartago, CR",(421)777-3528x435,74,gourmet,9.879918,-83.922791
+107,Tirado-Treviño,"Periférico Solís 633 985, Cartago, CR",118-813-4615x0040,64,gourmet,9.846392,-83.943894
+108,Pacheco-Fierro,"Retorno Puebla 366 Interior 105, Cartago, CR",1-092-801-9056x057,31,fast-food,9.844645,-83.938397
+109,Llamas-Orozco y Asociados,"Retorno República Federal Democrática de Nepal 079 Interior 311, Cartago, CR",822-331-0015x083,39,fast-food,9.880718,-83.925543
+110,Industrias Colón y Valencia,"Circunvalación Roque 751 Interior 610, Cartago, CR",1-276-471-4504x1860,97,gourmet,9.879911,-83.929859
+111,Cepeda S.C.,"Cerrada Chiapas 858 Interior 061, Cartago, CR",(662)522-3129x56559,98,fast-food,9.878388,-83.918438
+112,"Laboratorios Pabón, Ibarra y Zavala","Calzada Zambia 048 Edif. 186 , Depto. 828, Cartago, CR",607.070.3563x624,74,gourmet,9.858774,-83.934272
+113,Cabrera y Marín S. R.L. de C.V.,"Andador Sur Feliciano 237 Interior 144, Cartago, CR",871-716-1044x37450,64,gourmet,9.873037,-83.922762
+114,Villanueva-Olivas,"Retorno Toro 230 659, Cartago, CR",1-144-048-5423x5713,62,gourmet,9.880527,-83.936446
+115,Industrias Pabón y de la Rosa,"Circuito Norte Archuleta 008 Interior 229, Cartago, CR",709.384.5228,54,gourmet,9.852083,-83.943309
+116,Zamudio-Casares S. R.L. de C.V.,"Diagonal Campeche 213 Edif. 577 , Depto. 577, Cartago, CR",1-417-057-0947,34,fast-food,9.872248,-83.896965
+117,Loya-Pedraza S.A. de C.V.,"Privada Norte Robles 488 095, Cartago, CR",04320519680,67,gourmet,9.873945,-83.938298
+118,Grupo Valverde-Lovato,"Calzada República Democrática del Congo 557 Interior 659, Cartago, CR",+89(8)1705373795,41,fast-food,9.869284,-83.921048
+119,Medrano e Hijos,"Calzada Timor-Leste 506 Interior 821, Cartago, CR",1-431-514-0391x00994,89,casual,9.877435,-83.943156
+120,Bétancourt y Cotto A.C.,"Andador Nuevo León 215 701, Cartago, CR",(669)145-2269x446,39,casual,9.865158,-83.917487
+121,Industrias Armenta y Flórez,"Eje vial Perea 770 983, Cartago, CR",1-727-700-0849,66,gourmet,9.882686,-83.914313
+122,Laboratorios Estrada y Gallegos,"Retorno Distrito Federal 400 619, Cartago, CR",1-695-888-8991x712,36,casual,9.877557,-83.937546
+123,Orozco-Morales,"Boulevard Yucatán 320 014, Cartago, CR",01745811939,31,casual,9.845756,-83.926735
+124,"Grupo Vega, Orellana y Villalpando","Periférico Guerrero 233 Interior 633, Cartago, CR",1-234-224-0911x052,98,fast-food,9.862837,-83.932992
+125,Montes-Serrato S.A.,"Peatonal Sur Regalado 915 Edif. 311 , Depto. 624, Cartago, CR",07225953703,115,casual,9.861806,-83.921725
+126,Gil-Arroyo S. R.L. de C.V.,"Avenida Norte Báez 248 Edif. 045 , Depto. 329, Cartago, CR",+47(8)0120349652,73,gourmet,9.855425,-83.915841
+127,"Proyectos Arguello, Granados y Muñoz","Pasaje Chiapas 017 332, Cartago, CR",706.632.5647,84,gourmet,9.855197,-83.940223
+128,Grupo Zelaya-Quintanilla,"Boulevard Sur Portillo 286 110, Cartago, CR",773-796-5072,65,fast-food,9.862617,-83.906324
+129,Galván-Páez,"Periférico Paz 761 Interior 858, Cartago, CR",431-649-5213x54482,101,casual,9.851051,-83.923178
+130,Laboratorios Velásquez-Alba,"Andador Esparza 958 Edif. 567 , Depto. 234, Cartago, CR",1-667-362-7775,41,fast-food,9.870857,-83.925398
+131,Maestas-Madera A.C.,"Corredor Norte Valenzuela 663 Edif. 795 , Depto. 704, Cartago, CR",883-181-1238x9260,71,fast-food,9.873067,-83.909892
+132,Ayala S.A.,"Privada Maldivas 128 Interior 085, Cartago, CR",842.337.7564x4455,34,fast-food,9.856494,-83.913539
+133,Godoy y Asociados,"Pasaje Norte Sevilla 257 117, Cartago, CR",(116)710-2699,40,fast-food,9.844727,-83.917357
+134,"Aguilar, Robles y Orellana","Diagonal Letonia 179 Interior 086, Cartago, CR",1-610-517-9836x9521,61,fast-food,9.858132,-83.942734
+135,Camacho-Segura S. R.L. de C.V.,"Circuito Uzbekistán 223 199, Cartago, CR",167.605.5998x218,40,gourmet,9.853115,-83.927253
+136,Almaraz-Collado,"Diagonal Tello 563 Edif. 737 , Depto. 815, Cartago, CR",814.577.8775x6218,100,gourmet,9.860602,-83.914885
+137,Industrias Moreno y Garay,"Diagonal Seychelles 529 209, Cartago, CR",04692849910,71,fast-food,9.844173,-83.931338
+138,"Vera, Alvarado y Riojas","Eje vial Rosas 077 Edif. 495 , Depto. 388, Cartago, CR",701.518.3930x5321,57,fast-food,9.868489,-83.918557
+139,Club Santiago-Reséndez,"Boulevard Sur Fuentes 505 Edif. 699 , Depto. 409, Cartago, CR",+33(0)5905105242,82,casual,9.868469,-83.936948
+140,"Escalante, Rodarte y Lara","Cerrada Bravo 562 Interior 485, Cartago, CR",(021)260-8378x325,30,gourmet,9.8731,-83.902677
+141,Industrias Padilla y Caldera,"Continuación Norte Sánchez 655 Edif. 194 , Depto. 175, Cartago, CR",(225)424-2031x04009,111,gourmet,9.858369,-83.940992
+142,Grupo Olvera-Nazario,"Eje vial Barbados 372 Interior 431, Cartago, CR",(165)413-0737,69,fast-food,9.860932,-83.912104
+143,Elizondo y Esparza S. R.L. de C.V.,"Andador Mata 865 Edif. 577 , Depto. 776, Cartago, CR",565-133-8905,95,gourmet,9.872537,-83.920946
+144,Polanco y Vergara y Asociados,"Circunvalación Norte Tamayo 030 670, Cartago, CR",664-637-6403x717,101,casual,9.861978,-83.927988
+145,Collazo y Ulloa y Asociados,"Calle Baja California 748 063, Cartago, CR",(517)282-9517x780,77,gourmet,9.880418,-83.918253
+146,Flórez y Arevalo A.C.,"Privada Colón 136 Edif. 984 , Depto. 993, Cartago, CR",078.199.4682x2380,57,gourmet,9.854924,-83.937171
+147,Arenas-Lomeli y Asociados,"Corredor Sur Tijerina 474 783, Cartago, CR",(898)882-4019x56837,94,gourmet,9.857654,-83.903709
+148,Corporacin Patiño y Carrera,"Andador Casares 022 Interior 018, Cartago, CR",(738)073-8117,41,fast-food,9.845051,-83.902012
+149,Gil S.C.,"Corredor Mauricio 776 Interior 545, Cartago, CR",1-871-366-5208,42,fast-food,9.849109,-83.896782
+150,"Rodríquez, Blanco y Zepeda","Ampliación Norte Briseño 738 932, Cartago, CR",(931)220-2440x131,80,casual,9.84418,-83.944148
+151,Pichardo-Olivares S.A. de C.V.,"Retorno Norte Carrero 698 758, Cartago, CR",1-614-557-7687x61892,34,gourmet,9.882269,-83.915151
+152,"Suárez, Polanco y Montoya","Continuación Veracruz de Ignacio de la Llave 879 Edif. 437 , Depto. 016, Cartago, CR",06056805137,38,fast-food,9.871001,-83.910789
+153,Laboratorios Jaimes y Díaz,"Eje vial Norte Gil 635 Interior 889, Cartago, CR",1-062-615-5679x7582,71,gourmet,9.868601,-83.924707
+154,Noriega S. R.L. de C.V.,"Periférico Qatar 369 Interior 397, Cartago, CR",207.389.1613,49,casual,9.857154,-83.91578
+155,Club de la Fuente y Gastélum,"Calle México 583 Edif. 754 , Depto. 619, Cartago, CR",(848)775-9921x1710,119,gourmet,9.857654,-83.926273
+156,Proyectos Mora y Cano,"Circunvalación Canadá 655 Interior 793, Cartago, CR",(909)760-6067x9195,73,gourmet,9.875516,-83.897193
+157,Aranda y Armas e Hijos,"Circunvalación Paz 710 Edif. 344 , Depto. 036, Cartago, CR",+36(4)8999693204,33,fast-food,9.853119,-83.902566
+158,Despacho Rico y Bravo,"Cerrada Yucatán 659 270, Cartago, CR",1-736-481-8666x99649,78,fast-food,9.849624,-83.922169
+159,Corrales y Perea S. R.L. de C.V.,"Prolongación Lucio 638 532, Cartago, CR",341-526-3543,67,casual,9.862928,-83.941285
+160,"Baeza, Soria y Santiago","Privada Sonora 186 Edif. 508 , Depto. 379, Cartago, CR",(828)579-3247,66,fast-food,9.8589,-83.919598
+161,Amador-Olivo,"Privada Tlaxcala 691 452, Cartago, CR",(386)629-5617x2625,60,fast-food,9.881535,-83.915797
+162,Vásquez-Balderas,"Viaducto Hidalgo 967 Edif. 281 , Depto. 801, Cartago, CR",242-998-2287,55,gourmet,9.856084,-83.902208
+163,"Herrera, Flórez y Perea","Corredor Norte Delgadillo 210 910, Cartago, CR",04359093894,52,gourmet,9.857821,-83.934437
+164,"Corporacin Carmona, Ocasio y Pichardo","Calzada Durango 488 Interior 594, Cartago, CR",+04(3)3606066720,76,gourmet,9.875993,-83.922985
+165,Casas-Soria,"Eje vial Tlaxcala 484 024, Cartago, CR",421-427-6633,39,casual,9.861634,-83.920756
+166,Naranjo y Pacheco y Asociados,"Retorno Zamora 164 177, Cartago, CR",667-929-2652,71,fast-food,9.883736,-83.931982
+167,Munguía S. R.L. de C.V.,"Peatonal Norte Rosales 441 Interior 151, Cartago, CR",186.922.4048,112,casual,9.860175,-83.93518
+168,Corral-Pichardo,"Viaducto Norte Colunga 527 537, Cartago, CR",091.252.5738,82,gourmet,9.879769,-83.899515
+169,Corporacin Moreno y Farías,"Diagonal Urías 743 Interior 526, Cartago, CR",112.660.0462x561,104,fast-food,9.882978,-83.903711
+170,Maya-Saiz,"Avenida Veracruz de Ignacio de la Llave 306 614, Cartago, CR",232-841-6179,86,casual,9.855987,-83.944175
+171,Laboratorios Samaniego y Posada,"Continuación Sur Valle 925 006, Cartago, CR",1-784-442-1714x4714,69,fast-food,9.862595,-83.917736
+172,Corona-Santana,"Privada Sur Macías 569 882, Cartago, CR",(939)313-1089,112,fast-food,9.869052,-83.913621
+173,Orosco-Ortega S.A. de C.V.,"Cerrada Mesa 066 Edif. 712 , Depto. 983, Cartago, CR",1-362-848-3118,75,fast-food,9.880155,-83.907931
+174,Proyectos Ríos-Archuleta,"Privada Zacatecas 925 Edif. 716 , Depto. 415, Cartago, CR",610-440-2332x5482,62,fast-food,9.865774,-83.897221
+175,Madrigal-Murillo,"Boulevard Norte Gastélum 078 301, Cartago, CR",(114)718-7362x8779,116,casual,9.860203,-83.911202
+176,"Paz, Jaime y Quesada","Pasaje Libia 422 Interior 904, Cartago, CR",1-925-686-1419x975,117,fast-food,9.858045,-83.898316
+177,Valle y Verdugo S.A.,"Eje vial Grecia 879 841, Cartago, CR",1-999-125-9564,63,gourmet,9.864845,-83.913707
+178,Partida-Barragán S.A.,"Boulevard Bangladesh 888 Edif. 679 , Depto. 512, Cartago, CR",688.645.2358x8203,98,casual,9.85811,-83.906936
+179,Grupo Arevalo-Pineda,"Viaducto Veracruz de Ignacio de la Llave 275 Interior 269, Cartago, CR",523.927.5873,95,casual,9.867378,-83.921303
+180,Guillen S.C.,"Andador Sur Alonso 629 376, Cartago, CR",1-581-433-3112x606,93,casual,9.866569,-83.912835
+181,Casillas y Batista e Hijos,"Viaducto Norte Olivárez 847 Edif. 519 , Depto. 061, Cartago, CR",455.130.7949,120,casual,9.866554,-83.91467
+182,Salinas y Armenta S. R.L. de C.V.,"Callejón Malta 657 Edif. 057 , Depto. 951, Cartago, CR",053-969-3887,105,casual,9.860207,-83.930938
+183,"Laboratorios Muñiz, Nieves y Perales","Corredor Chavarría 680 Interior 068, Cartago, CR",(857)878-9728x159,66,fast-food,9.876205,-83.905259
+184,Corporacin Saavedra y Zapata,"Circunvalación Fierro 235 599, Cartago, CR",712-688-6900x801,75,fast-food,9.846433,-83.904241
+185,Calvillo-Reynoso S.A. de C.V.,"Cerrada Samaniego 217 Edif. 978 , Depto. 403, Cartago, CR",03092380777,99,gourmet,9.847733,-83.939751
+186,"Cervántez, Hinojosa y Gollum","Circunvalación Puebla 881 Interior 723, Cartago, CR",913-566-2840x14445,117,casual,9.880805,-83.931803
+187,"Corporacin Esparza, Ferrer y Benavídez","Periférico México 807 Interior 446, Cartago, CR",04988562359,39,gourmet,9.847436,-83.911904
+188,Mireles S.A.,"Peatonal Norte Irizarry 848 034, Cartago, CR",1-203-303-0284x9576,112,casual,9.85305,-83.915647
+189,Despacho Vaca-Meraz,"Callejón Croacia 859 Edif. 178 , Depto. 770, Cartago, CR",370.028.5131,109,gourmet,9.862923,-83.900496
+190,Montaño-Fajardo S. R.L. de C.V.,"Avenida Nicaragua 325 Interior 598, Cartago, CR",045.563.9520x56450,92,gourmet,9.86386,-83.899129
+191,Corporacin de Jesús y Salgado,"Periférico Norte Ballesteros 385 Edif. 624 , Depto. 452, Cartago, CR",(335)052-9480,67,gourmet,9.880041,-83.913864
+192,Rendón y Parra S.C.,"Viaducto Myanmar 067 Edif. 300 , Depto. 637, Cartago, CR",(097)241-3669x2496,67,fast-food,9.876869,-83.911117
+193,Corporacin Caballero-Bueno,"Ampliación San Luis Potosí 310 Edif. 607 , Depto. 865, Cartago, CR",024-769-3319,93,fast-food,9.867374,-83.904962
+194,Industrias Rosario y Rincón,"Corredor Distrito Federal 265 Interior 573, Cartago, CR",1-651-562-1802,31,casual,9.877706,-83.910337
+195,"Grupo Mascareñas, Sierra y Treviño","Prolongación Almanza 991 Edif. 972 , Depto. 543, Cartago, CR",+43(9)1085776878,88,casual,9.883465,-83.93575
+196,Proyectos Arroyo y Espino,"Calle Venezuela 659 512, Cartago, CR",1-370-327-7361,78,casual,9.873691,-83.899793
+197,Lucio-Vallejo,"Eje vial Marrero 350 Edif. 268 , Depto. 653, Cartago, CR",1-325-851-0022x856,118,gourmet,9.869026,-83.916291
+198,Viera y Soto S.A. de C.V.,"Peatonal Gambia 293 Interior 833, Cartago, CR",836.243.6572x412,82,fast-food,9.851962,-83.911921
+199,"Club Villanueva, de la Garza y Guerra","Privada Camarillo 344 Interior 028, Cartago, CR",04777341706,83,casual,9.859672,-83.941214
+200,"Lerma, Acosta y Torres","Ampliación Vietman 662 Interior 911, Cartago, CR",+86(8)6433405309,59,casual,9.854548,-83.924933

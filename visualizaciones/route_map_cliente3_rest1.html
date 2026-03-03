@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1a0c67866791b4efb029319015fea338 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style='position: fixed; 
+                    bottom: 50px; left: 50px; width: 320px; height: 160px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px;
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;'>
+        <h4 style='margin-top:0; color: #2E8B57;'>Información de Entrega Neo4j</h4>
+        <p><b>Cliente:</b> Olimpia</p>
+        <p><b>Restaurante:</b> Restaurante Mancebo & Asociados S.A.</p>
+        <p><b>Distancia:</b> 11.0 km</p>
+        <p><b>Tiempo estimado:</b> 22.0 min</p>
+        <p><b>Método:</b> Neo4j OSM Conectado</p>
+        <p><b>Segmentos:</b> 110</p>
+        <p><b>Datos:</b> Neo4j OSM Reales</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_1a0c67866791b4efb029319015fea338" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1a0c67866791b4efb029319015fea338 = L.map(
+                "map_1a0c67866791b4efb029319015fea338",
+                {
+                    center: [9.86686285, -83.92575729999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_88657de964b85a03d4776c994c5c73e2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_88657de964b85a03d4776c994c5c73e2.addTo(map_1a0c67866791b4efb029319015fea338);
+        
+    
+            var poly_line_b3c5cf8ac86754ce9b10191f05114544 = L.polyline(
+                [[9.8808758, -83.9254125], [9.8809783, -83.9258386], [9.8812619, -83.9270681], [9.8808434, -83.9271621], [9.880428, -83.9272553], [9.8800766, -83.9256998], [9.8800453, -83.9257019], [9.880015, -83.9256937], [9.8799889, -83.925676], [9.8799697, -83.9256503], [9.8799598, -83.9256197], [9.8797918, -83.9257739], [9.8796764, -83.9257832], [9.8795368, -83.9257586], [9.8793892, -83.9257043], [9.8792309, -83.9264755], [9.879141, -83.9269602], [9.8790832, -83.9272547], [9.8793554, -83.9279934], [9.8796125, -83.9287514], [9.8790296, -83.928988], [9.8787342, -83.9291567], [9.8788929, -83.9294979], [9.8788649, -83.9296357], [9.8787712, -83.9298504], [9.8786728, -83.9300082], [9.8790142, -83.9306626], [9.8790617, -83.9307505], [9.8791187, -83.9308559], [9.8793653, -83.9312993], [9.8792088, -83.9313791], [9.8790216, -83.9314745], [9.8788366, -83.9315185], [9.8784442, -83.9316118], [9.8782621, -83.9315964], [9.8778872, -83.9313798], [9.8776914, -83.9312667], [9.8770934, -83.9308169], [9.8766081, -83.9304754], [9.8764685, -83.9303914], [9.8757246, -83.9315867], [9.8752542, -83.9322832], [9.8746841, -83.9330056], [9.8746547, -83.9330428], [9.8743311, -83.9329053], [9.8740762, -83.9327952], [9.8739881, -83.9327547], [9.8737146, -83.9326394], [9.8734021, -83.932514], [9.8729609, -83.9323122], [9.8724539, -83.9320846], [9.8724243, -83.9320713], [9.8720862, -83.9319232], [9.8720521, -83.9319086], [9.8719077, -83.9318467], [9.871671, -83.9317554], [9.8714679, -83.9317194], [9.8712387, -83.9317097], [9.8710636, -83.9317153], [9.8707738, -83.9317241], [9.8706526, -83.931706], [9.8704822, -83.9316684], [9.8702296, -83.9315961], [9.8697656, -83.9314138], [9.8691968, -83.9312105], [9.868539, -83.9305719], [9.8683667, -83.9303948], [9.8681181, -83.9300781], [9.8680864, -83.9300467], [9.8680657, -83.9300222], [9.8680327, -83.9299831], [9.8676342, -83.929511], [9.867629, -83.9293563], [9.8675605, -83.928748], [9.8674656, -83.9280353], [9.8666184, -83.9281729], [9.8665381, -83.9274547], [9.866394, -83.9264383], [9.8662617, -83.925424], [9.8662552, -83.9253824], [9.866104, -83.9244172], [9.8652864, -83.924533], [9.8644346, -83.9246366], [9.8636064, -83.9247508], [9.8627699, -83.9248602], [9.8626485, -83.9240653], [9.8625154, -83.923151], [9.8623915, -83.9222643], [9.8615403, -83.9223708], [9.8606852, -83.9224878], [9.8597959, -83.9225825], [9.8590922, -83.9226806], [9.857946, -83.9228179], [9.8574497, -83.9228941], [9.8571843, -83.9229784], [9.8569488, -83.9231284], [9.856757, -83.9233301], [9.8566904, -83.9234064], [9.8564965, -83.9236393], [9.8563614, -83.9237959], [9.8561755, -83.9239557], [9.8559734, -83.9241083], [9.8558483, -83.924203], [9.8555747, -83.9244175], [9.8554689, -83.924495], [9.8552205, -83.9246694], [9.8547271, -83.9250389], [9.8537839, -83.9257363], [9.8536387, -83.9255348], [9.8528826, -83.9261028], [9.8528499, -83.9261021]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_1a0c67866791b4efb029319015fea338);
+        
+    
+        var popup_c85f8ca52192ac9ed0217f6dd564f534 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9485d01b816b57d8ae7542d7eb8bf459 = $(`<div id="html_9485d01b816b57d8ae7542d7eb8bf459" style="width: 100.0%; height: 100.0%;">Ruta Neo4j - 11.0 km (Método: Neo4j_OSM_Connected)</div>`)[0];
+                popup_c85f8ca52192ac9ed0217f6dd564f534.setContent(html_9485d01b816b57d8ae7542d7eb8bf459);
+            
+        
+
+        poly_line_b3c5cf8ac86754ce9b10191f05114544.bindPopup(popup_c85f8ca52192ac9ed0217f6dd564f534)
+        ;
+
+        
+    
+    
+            var marker_48124d6b209dbe71ed14e1ea27597ecf = L.marker(
+                [9.8808758, -83.9254125],
+                {
+}
+            ).addTo(map_1a0c67866791b4efb029319015fea338);
+        
+    
+            var icon_a79adf0898db581c80dce24e29c99903 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c06de19d61e7385d311345dbdd5ea64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4b89877d2fa66bab19bfc04c480a75d = $(`<div id="html_e4b89877d2fa66bab19bfc04c480a75d" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Restaurante Mancebo & Asociados S.A.</h4>                 <p><b>ID:</b> 1</p>                 <p><b>Coordenadas:</b> 9.880876, -83.925412</p>                 <p><b>Método:</b> Neo4j_OSM_Connected</p>             </div>             </div>`)[0];
+                popup_0c06de19d61e7385d311345dbdd5ea64.setContent(html_e4b89877d2fa66bab19bfc04c480a75d);
+            
+        
+
+        marker_48124d6b209dbe71ed14e1ea27597ecf.bindPopup(popup_0c06de19d61e7385d311345dbdd5ea64)
+        ;
+
+        
+    
+    
+            marker_48124d6b209dbe71ed14e1ea27597ecf.bindTooltip(
+                `<div>
+                     ORIGEN: Restaurante Mancebo & Asociados S.A.
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_48124d6b209dbe71ed14e1ea27597ecf.setIcon(icon_a79adf0898db581c80dce24e29c99903);
+            
+    
+            var marker_eeee33559987d277d426ce610ad112ee = L.marker(
+                [9.8528499, -83.9261021],
+                {
+}
+            ).addTo(map_1a0c67866791b4efb029319015fea338);
+        
+    
+            var icon_1110ec55f092d98f6a0719fab290d949 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b96bfe0e9dc49d4f41204af0cb1b83a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_918ba9891e72b23b55952d114014026c = $(`<div id="html_918ba9891e72b23b55952d114014026c" style="width: 100.0%; height: 100.0%;">             <div style='width: 200px;'>                 <h4>Cliente: Olimpia</h4>                 <p><b>ID:</b> 3</p>                 <p><b>Coordenadas:</b> 9.852850, -83.926102</p>                 <p><b>Segmentos:</b> 110</p>             </div>             </div>`)[0];
+                popup_b96bfe0e9dc49d4f41204af0cb1b83a1.setContent(html_918ba9891e72b23b55952d114014026c);
+            
+        
+
+        marker_eeee33559987d277d426ce610ad112ee.bindPopup(popup_b96bfe0e9dc49d4f41204af0cb1b83a1)
+        ;
+
+        
+    
+    
+            marker_eeee33559987d277d426ce610ad112ee.bindTooltip(
+                `<div>
+                     DESTINO: Olimpia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eeee33559987d277d426ce610ad112ee.setIcon(icon_1110ec55f092d98f6a0719fab290d949);
+            
+</script>
+</html>

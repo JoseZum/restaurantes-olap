@@ -1,0 +1,111 @@
+# =============================================================================
+# PostgreSQL Airflow - Base de datos para metadatos de Apache Airflow
+# Almacena el estado de DAGs, tareas, conexiones, variables y logs
+# del orquestador de flujos de trabajo.
+# Se despliega como StatefulSet con volumen persistente de 5Gi.
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-airflow
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: postgres-airflow
+    app.kubernetes.io/component: base-de-datos
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  # Servicio headless para StatefulSet
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: postgres-airflow
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: 5432
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-airflow
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: postgres-airflow
+    app.kubernetes.io/component: base-de-datos
+    app.kubernetes.io/part-of: restaurantes-olap
+spec:
+  serviceName: postgres-airflow
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgres-airflow
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: postgres-airflow
+        app.kubernetes.io/component: base-de-datos
+        app.kubernetes.io/part-of: restaurantes-olap
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_USER
+              value: "airflow"
+            - name: POSTGRES_DB
+              value: "airflow"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: olap-secrets
+                  key: AIRFLOW_DB_PASSWORD
+          ports:
+            - name: postgresql
+              containerPort: 5432
+              protocol: TCP
+          # Verificacion de salud nativa de PostgreSQL
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - airflow
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - airflow
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: airflow-db-data
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata
+  # Plantilla para volumen persistente de la base de datos de Airflow
+  volumeClaimTemplates:
+    - metadata:
+        name: airflow-db-data
+        labels:
+          app.kubernetes.io/name: postgres-airflow
+          app.kubernetes.io/part-of: restaurantes-olap
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi

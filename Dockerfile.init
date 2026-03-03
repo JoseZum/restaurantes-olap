@@ -1,0 +1,16 @@
+# Imagen de inicializacion automatica del sistema OLAP
+# Basada en bitnami/spark:latest que ya incluye Spark + Java
+FROM apache/spark:3.5.3-python3
+
+USER root
+
+# Instalar paquetes de Python necesarios para los scripts de Neo4j y procesamiento
+RUN pip install --no-cache-dir \
+    neo4j \
+    requests \
+    pandas
+
+# Directorio de trabajo principal
+WORKDIR /opt
+
+# El comando se define en docker-compose.yml

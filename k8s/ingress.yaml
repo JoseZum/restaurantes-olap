@@ -1,0 +1,65 @@
+# Ingress para la plataforma analitica OLAP
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: olap-ingress
+  namespace: restaurantes-olap
+  labels:
+    app.kubernetes.io/name: olap-ingress
+    app.kubernetes.io/component: balanceador
+    app.kubernetes.io/part-of: restaurantes-olap
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: olap.restaurantes.example.com
+      http:
+        paths:
+          # Panel de dashboards (Superset)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: superset
+                port:
+                  number: 8088
+          # Orquestador de pipelines (Airflow)
+          - path: /airflow
+            pathType: Prefix
+            backend:
+              service:
+                name: airflow-webserver
+                port:
+                  number: 8080
+          # Explorador de grafos (Neo4j Browser)
+          - path: /neo4j
+            pathType: Prefix
+            backend:
+              service:
+                name: neo4j
+                port:
+                  number: 7474
+          # Interfaz de Spark
+          - path: /spark
+            pathType: Prefix
+            backend:
+              service:
+                name: spark-master
+                port:
+                  number: 8080
+          # Interfaz de HDFS
+          - path: /hdfs
+            pathType: Prefix
+            backend:
+              service:
+                name: hdfs-namenode
+                port:
+                  number: 9870
+  # Seccion TLS lista para habilitar con cert-manager
+  # tls:
+  #   - hosts:
+  #       - olap.restaurantes.example.com
+  #     secretName: olap-tls-secret

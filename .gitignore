@@ -1,0 +1,48 @@
+# Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# Logs 
+**/logs/
+*.log
+
+# Airflow logs y base de datos
+airflow/logs/
+airflow/airflow.db
+
+# Datos y warehouse
+data/hive_warehouse/
+**/hive-warehouse/
+**/_temporary/
+**/*.crc
+
+# Archivos temporales de Spark y Hive
+**/metastore_db/
+**/spark-warehouse/
+**/derby.log
+spark-events/
+
+# Neo4j datos y logs
+neo4j/data/
+neo4j/logs/
+
+# Docker volumes
+volumes/
+
+# Drivers JDBC
+*.jar
+drivers/*.jar
+
+# Archivos binarios grandes
+*.parquet
+*.orc
+*.avro
+
+# IDE
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

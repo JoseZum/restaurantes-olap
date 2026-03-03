@@ -1,0 +1,115 @@
+{
+  "sistema": "Datos Completos para Análisis OLAP",
+  "fecha_generacion": "2025-06-28 18:10:07",
+  "datos_generados": {
+    "restaurantes": 50,
+    "usuarios": 100,
+    "productos": 276,
+    "pedidos": 1000,
+    "detalles_pedido": 2407
+  },
+  "archivos_csv": [
+    "spark/data/restaurantes.csv",
+    "spark/data/usuarios.csv",
+    "spark/data/productos.csv",
+    "spark/data/pedidos.csv",
+    "spark/data/detalles_pedido.csv"
+  ],
+  "estadisticas_negocio": {
+    "pedidos_completados": 858,
+    "pedidos_cancelados": 95,
+    "ingresos_total": 27243369,
+    "ticket_promedio": 31752.178321678322
+  },
+  "estadisticas_por_tipo_cocina": {
+    "Comida Italiana": {
+      "restaurantes": 2,
+      "productos": 11,
+      "pedidos": 37,
+      "ingresos_total": 1077830
+    },
+    "Comida Mexicana": {
+      "restaurantes": 4,
+      "productos": 19,
+      "pedidos": 71,
+      "ingresos_total": 2674690
+    },
+    "Asadero": {
+      "restaurantes": 5,
+      "productos": 24,
+      "pedidos": 94,
+      "ingresos_total": 3061420
+    },
+    "Comida Rápida": {
+      "restaurantes": 4,
+      "productos": 29,
+      "pedidos": 63,
+      "ingresos_total": 2117347
+    },
+    "Bar": {
+      "restaurantes": 6,
+      "productos": 30,
+      "pedidos": 101,
+      "ingresos_total": 2668411
+    },
+    "Comida China": {
+      "restaurantes": 5,
+      "productos": 26,
+      "pedidos": 88,
+      "ingresos_total": 2691970
+    },
+    "Marisquería": {
+      "restaurantes": 3,
+      "productos": 19,
+      "pedidos": 52,
+      "ingresos_total": 1685719
+    },
+    "Restaurante": {
+      "restaurantes": 7,
+      "productos": 41,
+      "pedidos": 128,
+      "ingresos_total": 4135428
+    },
+    "Pizzería": {
+      "restaurantes": 4,
+      "productos": 25,
+      "pedidos": 70,
+      "ingresos_total": 2443775
+    },
+    "Cafetería": {
+      "restaurantes": 1,
+      "productos": 7,
+      "pedidos": 13,
+      "ingresos_total": 284988
+    },
+    "Parrilla": {
+      "restaurantes": 3,
+      "productos": 17,
+      "pedidos": 41,
+      "ingresos_total": 980718
+    },
+    "Panadería": {
+      "restaurantes": 4,
+      "productos": 14,
+      "pedidos": 66,
+      "ingresos_total": 2117129
+    },
+    "Soda": {
+      "restaurantes": 1,
+      "productos": 8,
+      "pedidos": 16,
+      "ingresos_total": 643032
+    },
+    "Heladería": {
+      "restaurantes": 1,
+      "productos": 6,
+      "pedidos": 18,
+      "ingresos_total": 660912
+    }
+  },
+  "periodo_datos": {
+    "fecha_inicio": "2024-06-28",
+    "fecha_fin": "2025-06-28",
+    "dias_total": 365
+  }
+}

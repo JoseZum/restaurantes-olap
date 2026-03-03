@@ -1,0 +1,277 @@
+id,restaurante_id,nombre,descripcion,precio,categoria,disponible,tiempo_preparacion,calorias,vegetariano,picante
+1,1,Pizza Margherita,Pizza Margherita del Comida Italiana La Cocina,5074,Comida Italiana,False,38,749,False,False
+2,1,Tiramisu,Tiramisu del Comida Italiana La Cocina,2218,Comida Italiana,True,41,660,False,False
+3,1,Fettuccine Alfredo,Fettuccine Alfredo del Comida Italiana La Cocina,2492,Comida Italiana,True,42,627,True,True
+4,1,Bruschetta,Bruschetta del Comida Italiana La Cocina,7091,Comida Italiana,True,38,297,True,False
+5,1,Risotto ai Funghi,Risotto ai Funghi del Comida Italiana La Cocina,3216,Comida Italiana,True,25,544,False,True
+6,1,Gnocchi,Gnocchi del Comida Italiana La Cocina,3388,Comida Italiana,True,31,239,False,False
+7,2,Quesadillas,Quesadillas del Comida Mexicana La Casona,3624,Comida Mexicana,True,26,313,False,True
+8,2,Chiles Rellenos,Chiles Rellenos del Comida Mexicana La Casona,9922,Comida Mexicana,True,42,621,False,False
+9,2,Enchiladas,Enchiladas del Comida Mexicana La Casona,8995,Comida Mexicana,False,10,474,True,False
+10,2,Fajitas,Fajitas del Comida Mexicana La Casona,10859,Comida Mexicana,True,11,443,False,False
+11,2,Burritos,Burritos del Comida Mexicana La Casona,2622,Comida Mexicana,True,28,503,False,False
+12,3,Pollo Asado,Pollo Asado del Asadero Don,7236,Asadero,False,26,533,True,False
+13,3,Chorizo Asado,Chorizo Asado del Asadero Don,10381,Asadero,False,25,275,True,True
+14,3,Chuleta Asada,Chuleta Asada del Asadero Don,7585,Asadero,False,41,288,False,False
+15,3,Morcilla Asada,Morcilla Asada del Asadero Don,2649,Asadero,True,21,352,True,False
+16,3,Costillas Asadas,Costillas Asadas del Asadero Don,6043,Asadero,True,26,438,False,True
+17,3,Yuca Asada,Yuca Asada del Asadero Don,11276,Asadero,True,31,235,True,False
+18,3,Plátano Asado,Plátano Asado del Asadero Don,5545,Asadero,True,30,226,False,True
+19,4,Pollo Asado,Pollo Asado del Asadero El Fogón,4510,Asadero,False,15,491,True,False
+20,4,Yuca Asada,Yuca Asada del Asadero El Fogón,10820,Asadero,True,17,541,False,True
+21,4,Plátano Asado,Plátano Asado del Asadero El Fogón,5044,Asadero,True,31,382,True,False
+22,4,Morcilla Asada,Morcilla Asada del Asadero El Fogón,3726,Asadero,True,24,408,True,True
+23,4,Costillas Asadas,Costillas Asadas del Asadero El Fogón,4239,Asadero,True,32,465,False,True
+24,4,Chorizo Asado,Chorizo Asado del Asadero El Fogón,6978,Asadero,True,45,485,False,False
+25,4,Chuleta Asada,Chuleta Asada del Asadero El Fogón,7171,Asadero,False,26,423,True,False
+26,5,Refresco,Refresco del Comida Rápida El Sabor,9391,Comida Rápida,True,41,419,False,False
+27,5,Papas Fritas,Papas Fritas del Comida Rápida El Sabor,10234,Comida Rápida,False,20,503,True,False
+28,5,Sandwich,Sandwich del Comida Rápida El Sabor,10524,Comida Rápida,True,11,771,True,False
+29,5,Batido,Batido del Comida Rápida El Sabor,5237,Comida Rápida,True,28,789,True,False
+30,5,Nuggets de Pollo,Nuggets de Pollo del Comida Rápida El Sabor,7823,Comida Rápida,False,13,397,False,True
+31,5,Wrap,Wrap del Comida Rápida El Sabor,9801,Comida Rápida,True,41,336,True,False
+32,6,Papas Fritas,Papas Fritas del Comida Rápida El Buen Gusto,3871,Comida Rápida,True,13,589,True,False
+33,6,Hot Dog,Hot Dog del Comida Rápida El Buen Gusto,2513,Comida Rápida,False,20,318,True,True
+34,6,Wrap,Wrap del Comida Rápida El Buen Gusto,5774,Comida Rápida,True,42,464,True,True
+35,6,Nuggets de Pollo,Nuggets de Pollo del Comida Rápida El Buen Gusto,1899,Comida Rápida,False,30,666,False,True
+36,6,Sandwich,Sandwich del Comida Rápida El Buen Gusto,6042,Comida Rápida,True,31,340,False,True
+37,6,Batido,Batido del Comida Rápida El Buen Gusto,8490,Comida Rápida,True,22,719,False,False
+38,6,Hamburguesa,Hamburguesa del Comida Rápida El Buen Gusto,2859,Comida Rápida,False,25,515,True,False
+39,6,Refresco,Refresco del Comida Rápida El Buen Gusto,3512,Comida Rápida,True,31,501,True,False
+40,7,Botanas,Botanas del Bar El Buen Gusto,6157,Bar,True,26,478,True,False
+41,7,Ron,Ron del Bar El Buen Gusto,3837,Bar,True,17,485,True,True
+42,7,Cerveza,Cerveza del Bar El Buen Gusto,2982,Bar,True,15,528,False,False
+43,8,Sopa Wonton,Sopa Wonton del Comida China Don,1984,Comida China,True,10,585,False,True
+44,8,Arroz Chino,Arroz Chino del Comida China Don,6298,Comida China,True,37,797,False,False
+45,8,Pollo Agridulce,Pollo Agridulce del Comida China Don,3333,Comida China,True,39,310,False,False
+46,8,Wonton,Wonton del Comida China Don,5990,Comida China,True,16,365,True,False
+47,9,Pulpo a la Gallega,Pulpo a la Gallega del Marisquería Don,1554,Marisquería,True,35,260,True,False
+48,9,Sopa de Mariscos,Sopa de Mariscos del Marisquería Don,11229,Marisquería,True,29,584,False,False
+49,9,Pescado a la Veracruzana,Pescado a la Veracruzana del Marisquería Don,6442,Marisquería,True,16,430,True,False
+50,9,Langosta Thermidor,Langosta Thermidor del Marisquería Don,8139,Marisquería,True,11,738,True,False
+51,9,Ceviche,Ceviche del Marisquería Don,6676,Marisquería,True,10,483,True,True
+52,9,Paella de Mariscos,Paella de Mariscos del Marisquería Don,7592,Marisquería,True,25,490,True,False
+53,9,Camarones al Ajillo,Camarones al Ajillo del Marisquería Don,8754,Marisquería,False,41,773,True,False
+54,10,Lomito en Salsa,Lomito en Salsa del Restaurante El Sabor,7520,Restaurante,True,41,655,False,False
+55,10,Sopa de Mariscos,Sopa de Mariscos del Restaurante El Sabor,9600,Restaurante,True,35,548,False,False
+56,10,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante El Sabor,7841,Restaurante,True,30,425,True,False
+57,10,Paella,Paella del Restaurante El Sabor,11545,Restaurante,True,42,674,False,False
+58,10,Risotto,Risotto del Restaurante El Sabor,6672,Restaurante,True,25,316,False,False
+59,11,Calzone,Calzone del Pizzería El Típico,11604,Pizzería,False,31,545,False,True
+60,11,Lasagna,Lasagna del Pizzería El Típico,7521,Pizzería,True,20,216,True,False
+61,11,Pizza Vegetariana,Pizza Vegetariana del Pizzería El Típico,5606,Pizzería,False,16,415,True,False
+62,11,Pizza Margarita,Pizza Margarita del Pizzería El Típico,2816,Pizzería,True,41,326,True,False
+63,11,Pizza Suprema,Pizza Suprema del Pizzería El Típico,2996,Pizzería,True,27,612,True,False
+64,11,Pizza Hawaiana,Pizza Hawaiana del Pizzería El Típico,1896,Pizzería,True,41,521,True,False
+65,11,Pizza Cuatro Quesos,Pizza Cuatro Quesos del Pizzería El Típico,9489,Pizzería,True,41,629,False,False
+66,12,Sandwich,Sandwich del Cafetería Doña,1776,Cafetería,False,17,302,True,False
+67,12,Té Chai,Té Chai del Cafetería Doña,3245,Cafetería,True,28,665,True,False
+68,12,Cappuccino,Cappuccino del Cafetería Doña,3227,Cafetería,True,28,243,True,False
+69,12,Latte,Latte del Cafetería Doña,11228,Cafetería,False,21,557,False,False
+70,12,Café Americano,Café Americano del Cafetería Doña,5076,Cafetería,False,36,422,False,False
+71,12,Ensalada,Ensalada del Cafetería Doña,4810,Cafetería,True,37,248,False,False
+72,12,Muffin,Muffin del Cafetería Doña,7860,Cafetería,True,18,330,True,False
+73,13,Cerdo en Salsa Agridulce,Cerdo en Salsa Agridulce del Comida China El Fogón,5011,Comida China,True,40,522,False,True
+74,13,Sopa Wonton,Sopa Wonton del Comida China El Fogón,2464,Comida China,True,23,542,False,False
+75,13,Rollitos Primavera,Rollitos Primavera del Comida China El Fogón,11732,Comida China,False,36,356,False,False
+76,13,Chop Suey,Chop Suey del Comida China El Fogón,10820,Comida China,False,40,514,False,True
+77,13,Pollo Kung Pao,Pollo Kung Pao del Comida China El Fogón,2417,Comida China,True,17,665,False,False
+78,13,Arroz Chino,Arroz Chino del Comida China El Fogón,6765,Comida China,True,28,240,True,False
+79,13,Wonton,Wonton del Comida China El Fogón,5585,Comida China,False,16,771,True,True
+80,14,Risotto ai Funghi,Risotto ai Funghi del Comida Italiana Don,6875,Comida Italiana,True,44,706,False,False
+81,14,Ravioli,Ravioli del Comida Italiana Don,6710,Comida Italiana,True,23,397,False,True
+82,14,Tiramisu,Tiramisu del Comida Italiana Don,10962,Comida Italiana,True,24,351,True,True
+83,14,Bruschetta,Bruschetta del Comida Italiana Don,10070,Comida Italiana,True,17,241,True,False
+84,14,Spaghetti Carbonara,Spaghetti Carbonara del Comida Italiana Don,3027,Comida Italiana,True,38,562,False,False
+85,15,Langosta Thermidor,Langosta Thermidor del Marisquería Don,5447,Marisquería,False,35,380,True,True
+86,15,Pulpo a la Gallega,Pulpo a la Gallega del Marisquería Don,8262,Marisquería,True,14,286,False,False
+87,15,Paella de Mariscos,Paella de Mariscos del Marisquería Don,9521,Marisquería,True,35,398,True,False
+88,15,Ceviche,Ceviche del Marisquería Don,9368,Marisquería,True,18,578,True,True
+89,15,Camarones al Ajillo,Camarones al Ajillo del Marisquería Don,4105,Marisquería,True,42,561,False,False
+90,15,Pescado a la Veracruzana,Pescado a la Veracruzana del Marisquería Don,7788,Marisquería,True,39,527,True,False
+91,15,Sopa de Mariscos,Sopa de Mariscos del Marisquería Don,2970,Marisquería,True,34,655,False,False
+92,16,Provoleta,Provoleta del Parrilla La Casona,11588,Parrilla,False,21,225,False,False
+93,16,Vacío,Vacío del Parrilla La Casona,2550,Parrilla,True,13,217,False,False
+94,16,Costillas BBQ,Costillas BBQ del Parrilla La Casona,1711,Parrilla,True,38,785,True,False
+95,16,Churrasco,Churrasco del Parrilla La Casona,5073,Parrilla,False,24,771,True,False
+96,16,Chorizo Argentino,Chorizo Argentino del Parrilla La Casona,2567,Parrilla,True,38,717,False,True
+97,16,Morcilla,Morcilla del Parrilla La Casona,5936,Parrilla,True,22,331,False,True
+98,17,Daiquiri,Daiquiri del Bar El Sabor,6530,Bar,True,42,316,True,True
+99,17,Margarita,Margarita del Bar El Sabor,7896,Bar,True,41,391,True,True
+100,17,Ron,Ron del Bar El Sabor,11524,Bar,True,30,640,False,False
+101,17,Botanas,Botanas del Bar El Sabor,11852,Bar,True,42,514,True,False
+102,18,Pizza Suprema,Pizza Suprema del Pizzería La Esquina,6781,Pizzería,True,13,432,True,False
+103,18,Calzone,Calzone del Pizzería La Esquina,7733,Pizzería,True,45,569,False,False
+104,18,Pizza Cuatro Quesos,Pizza Cuatro Quesos del Pizzería La Esquina,5095,Pizzería,True,15,606,False,False
+105,18,Pizza Pepperoni,Pizza Pepperoni del Pizzería La Esquina,10795,Pizzería,True,27,343,False,True
+106,18,Lasagna,Lasagna del Pizzería La Esquina,9459,Pizzería,True,32,740,False,False
+107,18,Pizza Margarita,Pizza Margarita del Pizzería La Esquina,3458,Pizzería,True,23,315,False,False
+108,19,Plátano Asado,Plátano Asado del Asadero El Rincón,3443,Asadero,True,38,264,False,False
+109,19,Costillas Asadas,Costillas Asadas del Asadero El Rincón,10763,Asadero,True,36,748,False,False
+110,19,Pollo Asado,Pollo Asado del Asadero El Rincón,5957,Asadero,True,28,267,False,True
+111,20,Empanadas,Empanadas del Panadería La Tradición,5533,Panadería,True,14,486,True,False
+112,20,Queque,Queque del Panadería La Tradición,11039,Panadería,True,38,744,False,True
+113,20,Torta,Torta del Panadería La Tradición,7117,Panadería,True,15,295,False,False
+114,21,Filete de Pescado,Filete de Pescado del Restaurante El Rincón,2239,Restaurante,True,26,794,True,False
+115,21,Paella,Paella del Restaurante El Rincón,5571,Restaurante,True,16,770,False,False
+116,21,Lomito en Salsa,Lomito en Salsa del Restaurante El Rincón,7532,Restaurante,True,24,532,False,False
+117,21,Pasta Alfredo,Pasta Alfredo del Restaurante El Rincón,9409,Restaurante,False,28,569,True,True
+118,21,Risotto,Risotto del Restaurante El Rincón,8424,Restaurante,True,27,344,False,True
+119,21,Sopa de Mariscos,Sopa de Mariscos del Restaurante El Rincón,5409,Restaurante,False,38,511,False,True
+120,21,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante El Rincón,11711,Restaurante,True,42,390,True,False
+121,22,Pizza Cuatro Quesos,Pizza Cuatro Quesos del Pizzería El Rincón,5681,Pizzería,False,32,545,True,False
+122,22,Lasagna,Lasagna del Pizzería El Rincón,11713,Pizzería,True,13,465,False,False
+123,22,Pizza Margarita,Pizza Margarita del Pizzería El Rincón,6339,Pizzería,True,16,274,True,False
+124,22,Pizza Hawaiana,Pizza Hawaiana del Pizzería El Rincón,5031,Pizzería,True,25,494,True,False
+125,22,Calzone,Calzone del Pizzería El Rincón,2746,Pizzería,True,34,408,False,False
+126,22,Pizza Vegetariana,Pizza Vegetariana del Pizzería El Rincón,10343,Pizzería,True,35,732,True,False
+127,22,Pizza Pepperoni,Pizza Pepperoni del Pizzería El Rincón,10416,Pizzería,False,41,229,False,False
+128,23,Wonton,Wonton del Comida China La Tradición,6440,Comida China,True,31,286,True,True
+129,23,Cerdo en Salsa Agridulce,Cerdo en Salsa Agridulce del Comida China La Tradición,6591,Comida China,True,22,669,True,False
+130,23,Pollo Agridulce,Pollo Agridulce del Comida China La Tradición,7053,Comida China,True,32,602,False,True
+131,23,Pollo Kung Pao,Pollo Kung Pao del Comida China La Tradición,7980,Comida China,True,11,771,False,True
+132,23,Arroz Chino,Arroz Chino del Comida China La Tradición,8663,Comida China,True,29,451,False,True
+133,23,Rollitos Primavera,Rollitos Primavera del Comida China La Tradición,2638,Comida China,True,39,525,True,False
+134,24,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante El Sabor,6024,Restaurante,False,19,256,False,False
+135,24,Sopa de Mariscos,Sopa de Mariscos del Restaurante El Sabor,2377,Restaurante,True,45,762,False,False
+136,24,Ensalada César,Ensalada César del Restaurante El Sabor,9075,Restaurante,True,31,696,True,False
+137,24,Risotto,Risotto del Restaurante El Sabor,10235,Restaurante,True,25,604,False,False
+138,24,Paella,Paella del Restaurante El Sabor,5681,Restaurante,True,36,708,False,True
+139,24,Pasta Alfredo,Pasta Alfredo del Restaurante El Sabor,4139,Restaurante,True,24,703,False,False
+140,25,Pollo a la Parrilla,Pollo a la Parrilla del Parrilla El Fogón,3235,Parrilla,False,24,367,False,False
+141,25,Churrasco,Churrasco del Parrilla El Fogón,1569,Parrilla,True,28,343,False,True
+142,25,Morcilla,Morcilla del Parrilla El Fogón,7171,Parrilla,True,28,235,False,False
+143,25,Chorizo Argentino,Chorizo Argentino del Parrilla El Fogón,1819,Parrilla,False,24,400,False,False
+144,26,Empanadas,Empanadas del Panadería La Esquina,9076,Panadería,False,40,534,True,True
+145,26,Tres Leches,Tres Leches del Panadería La Esquina,5776,Panadería,True,18,350,True,True
+146,26,Croissant,Croissant del Panadería La Esquina,4571,Panadería,False,12,765,True,False
+147,27,Fajitas,Fajitas del Comida Mexicana El Típico,10445,Comida Mexicana,False,35,728,False,True
+148,27,Burritos,Burritos del Comida Mexicana El Típico,8728,Comida Mexicana,True,21,358,False,False
+149,27,Enchiladas,Enchiladas del Comida Mexicana El Típico,5345,Comida Mexicana,False,22,529,True,False
+150,27,Tacos,Tacos del Comida Mexicana El Típico,9947,Comida Mexicana,True,13,448,True,True
+151,27,Nachos,Nachos del Comida Mexicana El Típico,6936,Comida Mexicana,False,19,412,True,False
+152,27,Guacamole,Guacamole del Comida Mexicana El Típico,10974,Comida Mexicana,True,42,252,False,True
+153,28,Rollitos Primavera,Rollitos Primavera del Comida China La Cocina,6302,Comida China,True,31,235,False,False
+154,28,Cerdo en Salsa Agridulce,Cerdo en Salsa Agridulce del Comida China La Cocina,9354,Comida China,True,23,553,True,False
+155,28,Wonton,Wonton del Comida China La Cocina,8980,Comida China,True,32,220,True,False
+156,28,Chop Suey,Chop Suey del Comida China La Cocina,6733,Comida China,True,30,324,True,True
+157,28,Pollo Agridulce,Pollo Agridulce del Comida China La Cocina,7999,Comida China,False,21,203,True,False
+158,28,Sopa Wonton,Sopa Wonton del Comida China La Cocina,7044,Comida China,True,41,419,True,False
+159,29,Risotto,Risotto del Restaurante La Esquina,4883,Restaurante,False,24,650,False,False
+160,29,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante La Esquina,5856,Restaurante,False,10,383,False,False
+161,29,Sopa de Mariscos,Sopa de Mariscos del Restaurante La Esquina,8344,Restaurante,True,14,709,True,True
+162,29,Filete de Pescado,Filete de Pescado del Restaurante La Esquina,9707,Restaurante,False,19,535,False,False
+163,29,Paella,Paella del Restaurante La Esquina,7481,Restaurante,True,44,703,True,False
+164,29,Lomito en Salsa,Lomito en Salsa del Restaurante La Esquina,6426,Restaurante,True,36,214,False,False
+165,29,Pasta Alfredo,Pasta Alfredo del Restaurante La Esquina,11836,Restaurante,True,39,432,False,True
+166,30,Batido,Batido del Comida Rápida El Buen Gusto,11489,Comida Rápida,True,10,725,False,False
+167,30,Hot Dog,Hot Dog del Comida Rápida El Buen Gusto,11128,Comida Rápida,True,30,548,False,False
+168,30,Refresco,Refresco del Comida Rápida El Buen Gusto,11473,Comida Rápida,True,12,473,False,False
+169,30,Wrap,Wrap del Comida Rápida El Buen Gusto,8076,Comida Rápida,False,37,727,False,False
+170,30,Nuggets de Pollo,Nuggets de Pollo del Comida Rápida El Buen Gusto,8180,Comida Rápida,True,37,731,False,False
+171,30,Hamburguesa,Hamburguesa del Comida Rápida El Buen Gusto,2963,Comida Rápida,True,13,291,False,False
+172,30,Papas Fritas,Papas Fritas del Comida Rápida El Buen Gusto,11599,Comida Rápida,False,29,317,False,False
+173,31,Yuca Asada,Yuca Asada del Asadero El Fogón,11626,Asadero,True,20,254,True,False
+174,31,Pollo Asado,Pollo Asado del Asadero El Fogón,1922,Asadero,True,21,776,True,False
+175,31,Costillas Asadas,Costillas Asadas del Asadero El Fogón,7345,Asadero,True,40,426,True,False
+176,31,Chorizo Asado,Chorizo Asado del Asadero El Fogón,9521,Asadero,True,45,617,True,False
+177,32,Botanas,Botanas del Bar La Casona,6379,Bar,True,42,785,False,False
+178,32,Mojito,Mojito del Bar La Casona,4605,Bar,True,13,574,True,False
+179,32,Ron,Ron del Bar La Casona,2229,Bar,False,27,516,True,False
+180,33,Pizza Hawaiana,Pizza Hawaiana del Pizzería La Cocina,4550,Pizzería,False,13,330,False,True
+181,33,Lasagna,Lasagna del Pizzería La Cocina,3993,Pizzería,True,32,205,True,False
+182,33,Pizza Margarita,Pizza Margarita del Pizzería La Cocina,10707,Pizzería,True,26,795,True,False
+183,33,Pizza Cuatro Quesos,Pizza Cuatro Quesos del Pizzería La Cocina,6913,Pizzería,False,19,538,False,True
+184,33,Pizza Suprema,Pizza Suprema del Pizzería La Cocina,10825,Pizzería,False,18,576,False,False
+185,34,Pollo Agridulce,Pollo Agridulce del Comida China El Fogón,3690,Comida China,True,22,207,True,False
+186,34,Pollo Kung Pao,Pollo Kung Pao del Comida China El Fogón,11180,Comida China,True,13,555,False,False
+187,34,Arroz Chino,Arroz Chino del Comida China El Fogón,4279,Comida China,False,34,797,False,False
+188,35,Empanadas,Empanadas del Panadería El Rincón,5409,Panadería,True,28,709,False,False
+189,35,Pan Dulce,Pan Dulce del Panadería El Rincón,5501,Panadería,True,36,409,True,False
+190,35,Tres Leches,Tres Leches del Panadería El Rincón,4952,Panadería,True,24,329,False,True
+191,35,Torta,Torta del Panadería El Rincón,4823,Panadería,True,28,769,False,True
+192,35,Queque,Queque del Panadería El Rincón,10008,Panadería,False,27,209,True,False
+193,36,Enchiladas,Enchiladas del Comida Mexicana El Buen Gusto,2805,Comida Mexicana,False,34,214,False,False
+194,36,Burritos,Burritos del Comida Mexicana El Buen Gusto,10834,Comida Mexicana,False,14,526,False,False
+195,36,Nachos,Nachos del Comida Mexicana El Buen Gusto,6940,Comida Mexicana,True,23,794,True,False
+196,37,Fajitas,Fajitas del Comida Mexicana La Esquina,6959,Comida Mexicana,False,23,767,True,False
+197,37,Guacamole,Guacamole del Comida Mexicana La Esquina,11228,Comida Mexicana,True,15,428,True,False
+198,37,Burritos,Burritos del Comida Mexicana La Esquina,5231,Comida Mexicana,False,20,461,False,False
+199,37,Quesadillas,Quesadillas del Comida Mexicana La Esquina,10787,Comida Mexicana,True,12,239,False,False
+200,37,Tacos,Tacos del Comida Mexicana La Esquina,6030,Comida Mexicana,False,17,299,True,False
+201,38,Langosta Thermidor,Langosta Thermidor del Marisquería La Casona,8359,Marisquería,True,24,269,False,False
+202,38,Paella de Mariscos,Paella de Mariscos del Marisquería La Casona,6999,Marisquería,True,18,498,True,True
+203,38,Sopa de Mariscos,Sopa de Mariscos del Marisquería La Casona,2838,Marisquería,True,39,534,True,False
+204,38,Pescado a la Veracruzana,Pescado a la Veracruzana del Marisquería La Casona,1584,Marisquería,True,23,310,True,False
+205,38,Camarones al Ajillo,Camarones al Ajillo del Marisquería La Casona,1516,Marisquería,True,39,740,True,False
+206,39,Piña Colada,Piña Colada del Bar La Cocina,3686,Bar,True,14,674,True,False
+207,39,Cerveza,Cerveza del Bar La Cocina,9939,Bar,True,10,293,True,False
+208,39,Whisky,Whisky del Bar La Cocina,4480,Bar,True,32,624,True,False
+209,39,Margarita,Margarita del Bar La Cocina,7056,Bar,False,20,371,True,False
+210,39,Botanas,Botanas del Bar La Cocina,4002,Bar,False,13,501,False,True
+211,39,Mojito,Mojito del Bar La Cocina,2882,Bar,True,20,582,False,True
+212,39,Ron,Ron del Bar La Cocina,5297,Bar,True,19,635,False,False
+213,40,Piña Colada,Piña Colada del Bar El Buen Gusto,2184,Bar,False,34,775,False,True
+214,40,Margarita,Margarita del Bar El Buen Gusto,10662,Bar,True,13,612,False,False
+215,40,Whisky,Whisky del Bar El Buen Gusto,8552,Bar,True,31,370,True,False
+216,40,Ron,Ron del Bar El Buen Gusto,6834,Bar,False,45,709,True,False
+217,40,Mojito,Mojito del Bar El Buen Gusto,3771,Bar,False,13,439,False,False
+218,40,Botanas,Botanas del Bar El Buen Gusto,5336,Bar,True,31,545,True,False
+219,40,Daiquiri,Daiquiri del Bar El Buen Gusto,7998,Bar,False,40,499,False,True
+220,41,Hamburguesa,Hamburguesa del Comida Rápida Doña,4879,Comida Rápida,True,32,205,True,False
+221,41,Hot Dog,Hot Dog del Comida Rápida Doña,7682,Comida Rápida,True,35,550,False,False
+222,41,Nuggets de Pollo,Nuggets de Pollo del Comida Rápida Doña,6157,Comida Rápida,True,42,751,False,False
+223,41,Batido,Batido del Comida Rápida Doña,2577,Comida Rápida,True,36,309,False,True
+224,41,Refresco,Refresco del Comida Rápida Doña,6513,Comida Rápida,True,20,459,False,False
+225,41,Wrap,Wrap del Comida Rápida Doña,5939,Comida Rápida,True,12,722,True,False
+226,41,Sandwich,Sandwich del Comida Rápida Doña,3540,Comida Rápida,False,29,533,True,False
+227,41,Papas Fritas,Papas Fritas del Comida Rápida Doña,3864,Comida Rápida,True,11,653,True,False
+228,42,Chifrijo,Chifrijo del Soda El Sabor,4231,Soda,True,23,391,True,True
+229,42,Olla de Carne,Olla de Carne del Soda El Sabor,6725,Soda,False,37,688,False,False
+230,42,Gallo Pinto,Gallo Pinto del Soda El Sabor,8886,Soda,True,10,274,False,True
+231,42,Pescado Frito,Pescado Frito del Soda El Sabor,9909,Soda,True,22,648,False,True
+232,42,Casado,Casado del Soda El Sabor,5414,Soda,True,25,686,True,False
+233,42,Pollo a la Plancha,Pollo a la Plancha del Soda El Sabor,11547,Soda,True,36,749,True,False
+234,42,Arroz con Pollo,Arroz con Pollo del Soda El Sabor,8800,Soda,True,10,735,False,False
+235,42,Bistec Encebollado,Bistec Encebollado del Soda El Sabor,4890,Soda,True,24,316,True,False
+236,43,Galletas,Galletas del Panadería El Buen Gusto,4328,Panadería,True,29,266,False,True
+237,43,Queque,Queque del Panadería El Buen Gusto,4618,Panadería,False,13,752,False,False
+238,43,Empanadas,Empanadas del Panadería El Buen Gusto,11513,Panadería,True,34,266,False,True
+239,44,Sopa de Mariscos,Sopa de Mariscos del Restaurante La Cocina,4746,Restaurante,True,10,512,False,False
+240,44,Ensalada César,Ensalada César del Restaurante La Cocina,11849,Restaurante,True,28,436,False,False
+241,44,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante La Cocina,6559,Restaurante,False,21,275,True,False
+242,44,Paella,Paella del Restaurante La Cocina,5325,Restaurante,True,14,400,False,False
+243,44,Risotto,Risotto del Restaurante La Cocina,1579,Restaurante,True,41,277,True,False
+244,45,Mojito,Mojito del Bar La Esquina,7482,Bar,True,24,493,False,False
+245,45,Ron,Ron del Bar La Esquina,6163,Bar,True,14,441,False,False
+246,45,Whisky,Whisky del Bar La Esquina,11656,Bar,True,35,287,True,True
+247,45,Piña Colada,Piña Colada del Bar La Esquina,8887,Bar,True,11,602,True,False
+248,45,Margarita,Margarita del Bar La Esquina,3918,Bar,False,19,317,False,False
+249,45,Daiquiri,Daiquiri del Bar La Esquina,7149,Bar,True,10,299,True,False
+250,46,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante Doña,2549,Restaurante,False,42,598,False,True
+251,46,Sopa de Mariscos,Sopa de Mariscos del Restaurante Doña,7215,Restaurante,False,36,277,False,False
+252,46,Pasta Alfredo,Pasta Alfredo del Restaurante Doña,7142,Restaurante,True,22,516,False,False
+253,46,Paella,Paella del Restaurante Doña,11510,Restaurante,False,34,533,True,False
+254,46,Ensalada César,Ensalada César del Restaurante Doña,3210,Restaurante,True,27,218,True,False
+255,46,Filete de Pescado,Filete de Pescado del Restaurante Doña,6584,Restaurante,False,45,620,True,False
+256,46,Lomito en Salsa,Lomito en Salsa del Restaurante Doña,8976,Restaurante,True,22,649,True,False
+257,46,Risotto,Risotto del Restaurante Doña,1577,Restaurante,False,30,321,False,False
+258,47,Helado de Chocolate,Helado de Chocolate del Heladería El Rincón,6486,Heladería,True,39,260,False,False
+259,47,Paleta,Paleta del Heladería El Rincón,9618,Heladería,True,23,323,False,False
+260,47,Helado de Vainilla,Helado de Vainilla del Heladería El Rincón,11017,Heladería,True,35,695,True,False
+261,47,Copa,Copa del Heladería El Rincón,8685,Heladería,True,20,602,False,False
+262,47,Batido,Batido del Heladería El Rincón,3263,Heladería,False,44,756,True,True
+263,47,Cono,Cono del Heladería El Rincón,7080,Heladería,True,45,714,True,False
+264,48,Entraña,Entraña del Parrilla El Buen Gusto,4099,Parrilla,True,13,444,False,False
+265,48,Provoleta,Provoleta del Parrilla El Buen Gusto,4077,Parrilla,True,31,799,True,False
+266,48,Pollo a la Parrilla,Pollo a la Parrilla del Parrilla El Buen Gusto,1789,Parrilla,True,36,351,True,True
+267,48,Vacío,Vacío del Parrilla El Buen Gusto,2537,Parrilla,True,31,268,True,False
+268,48,Chorizo Argentino,Chorizo Argentino del Parrilla El Buen Gusto,10040,Parrilla,False,34,765,False,False
+269,48,Costillas BBQ,Costillas BBQ del Parrilla El Buen Gusto,4268,Parrilla,True,23,665,True,False
+270,48,Morcilla,Morcilla del Parrilla El Buen Gusto,2441,Parrilla,False,20,574,False,False
+271,49,Morcilla Asada,Morcilla Asada del Asadero Doña,3207,Asadero,True,19,550,False,False
+272,49,Plátano Asado,Plátano Asado del Asadero Doña,3020,Asadero,True,20,443,False,True
+273,49,Yuca Asada,Yuca Asada del Asadero Doña,8482,Asadero,True,20,711,False,False
+274,50,Filete de Pescado,Filete de Pescado del Restaurante El Rincón,2223,Restaurante,False,15,520,True,False
+275,50,Risotto,Risotto del Restaurante El Rincón,3115,Restaurante,False,42,462,False,False
+276,50,Pollo en Salsa de Champiñones,Pollo en Salsa de Champiñones del Restaurante El Rincón,6650,Restaurante,True,17,510,False,False
