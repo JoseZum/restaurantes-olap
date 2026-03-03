@@ -6,28 +6,85 @@ Plataforma de analitica de datos para el dominio de restaurantes, construida sob
 
 ## Arquitectura del Sistema
 
-```
-  Datos CSV (spark/data/)
-        |
-        v
-  Apache Airflow (orquestacion)
-        |
-        v
-  Apache Spark (ETL + analitica)
-        |
-        +---> Apache Hive (Data Warehouse, esquema estrella)
-        |         |
-        |         v
-        |     Apache Superset (dashboards)
-        |
-        +---> Neo4j (grafo de entidades + red vial)
-        |         |
-        |         +---> Rutas optimas (Dijkstra / APOC / GDS)
-        |         +---> Recomendaciones
-        |
-        +---> Elasticsearch (indexacion analitica)
+```mermaid
+graph TB
+    subgraph "Capa de Datos"
+        CSV[("CSV Files<br/>usuarios, restaurantes,<br/>pedidos, reservas")]
+        OSM[("OpenStreetMap<br/>Cartago, CR<br/>33k nodos viales")]
+    end
 
-  Almacenamiento: HDFS (Parquet)
+    subgraph "Capa de Orquestación"
+        AIRFLOW["Apache Airflow 2.8.0<br/>:8081<br/>Scheduler + DAG Pipeline"]
+        PG_AIRFLOW[("PostgreSQL<br/>:5434<br/>Metadata")]
+    end
+
+    subgraph "Capa de Procesamiento"
+        SPARK_MASTER["Spark Master<br/>:7077<br/>Coordinador"]
+        SPARK_WORKER["Spark Worker<br/>6 cores, 18GB RAM"]
+        SPARK_JOBS["Jobs Spark<br/>• etl_from_csv.py<br/>• tendencias_mejorado.py<br/>• horarios_pico.py<br/>• crecimiento.py"]
+    end
+
+    subgraph "Capa de Almacenamiento OLAP"
+        HDFS["HDFS NameNode<br/>:9870<br/>Hadoop 3.2.1"]
+        HIVE_META["Hive Metastore<br/>:9083<br/>Thrift"]
+        HIVE_SERVER["HiveServer2<br/>:10000<br/>JDBC/SQL"]
+        PG_HIVE[("PostgreSQL<br/>:5433<br/>Metastore DB")]
+        DW[("Data Warehouse<br/>restaurantes_dw<br/>Formato Parquet<br/>Esquema Estrella")]
+    end
+
+    subgraph "Capa de Grafos"
+        NEO4J["Neo4j 5.25.1<br/>:7474 / :7687<br/>APOC + GDS"]
+        NEO4J_SCRIPTS["Scripts Python<br/>• init_graph.py<br/>• csv_data_loader.py<br/>• cypher_queries.py"]
+    end
+
+    subgraph "Capa de Búsqueda"
+        ELASTIC["Elasticsearch 8.11.0<br/>:9200<br/>Índice de productos"]
+    end
+
+    subgraph "Capa de Visualización"
+        SUPERSET["Apache Superset 3.0.0<br/>:8088<br/>Dashboards"]
+        PG_SUPERSET[("PostgreSQL<br/>:5435<br/>Metadata")]
+        REDIS["Redis 7<br/>Cache"]
+    end
+
+    subgraph "Salidas"
+        ROUTES["Mapas HTML<br/>Leaflet.js<br/>Rutas optimizadas"]
+        DASH["Dashboards<br/>Interactivos"]
+    end
+
+    CSV --> AIRFLOW
+    AIRFLOW --> SPARK_MASTER
+    SPARK_MASTER --> SPARK_WORKER
+    SPARK_WORKER --> SPARK_JOBS
+
+    SPARK_JOBS --> HDFS
+    SPARK_JOBS --> HIVE_SERVER
+    SPARK_JOBS --> ELASTIC
+
+    HIVE_SERVER --> HIVE_META
+    HIVE_META --> PG_HIVE
+    HDFS --> DW
+    HIVE_META --> DW
+
+    CSV --> NEO4J_SCRIPTS
+    OSM --> NEO4J_SCRIPTS
+    NEO4J_SCRIPTS --> NEO4J
+
+    DW --> SUPERSET
+    SUPERSET --> PG_SUPERSET
+    SUPERSET --> REDIS
+    SUPERSET --> DASH
+
+    NEO4J --> ROUTES
+
+    AIRFLOW --> PG_AIRFLOW
+
+    style CSV fill:#e1f5ff
+    style OSM fill:#e1f5ff
+    style DW fill:#fff4e1
+    style NEO4J fill:#ffe1f5
+    style SUPERSET fill:#e1ffe1
+    style SPARK_JOBS fill:#f5e1ff
 ```
 
 ---
@@ -63,11 +120,10 @@ Plataforma de analitica de datos para el dominio de restaurantes, construida sob
 ### Levantar el sistema
 
 ```bash
-# Crear redes externas de Docker
+# Crear red externa de Docker (solo si no existe)
 docker network create mongo-cluster
-docker network create olapnet
 
-# Levantar todos los servicios
+# Levantar todos los servicios (olapnet se crea automaticamente)
 docker compose up -d
 ```
 
@@ -153,9 +209,9 @@ Los jobs de procesamiento se encuentran en `spark/jobs/`:
 | Archivo                | Descripcion                                             |
 |------------------------|---------------------------------------------------------|
 | etl_from_csv.py        | ETL principal: lee CSV, transforma y carga al DW        |
-| etl_star.py            | Transformacion especifica al modelo estrella             |
-| tendencias_mejorado.py | Analisis de tendencias de ventas en el tiempo            |
-| crecimiento.py         | Metricas de crecimiento de usuarios y restaurantes      |
+| tendencias_mejorado.py | Analisis de tendencias de ventas por mes y categoria    |
+| tendencias.py          | Version simplificada del analisis de tendencias         |
+| crecimiento.py         | Metricas de crecimiento mensual de ingresos             |
 | horarios_pico.py       | Identificacion de franjas horarias de mayor actividad    |
 
 ### Ejecutar un job manualmente
@@ -177,7 +233,20 @@ Para acceder a la interfaz web de Airflow:
 
 1. Abrir http://localhost:8081
 2. Credenciales: admin / admin
-3. Activar el DAG `restaurantes_etl_dag`
+3. Activar el DAG `restaurantes_etl_pipeline`
+
+### Flujo del Pipeline
+
+El DAG ejecuta 12 tareas en el siguiente orden:
+1. Verificaciones iniciales (PostgreSQL + Hive Metastore)
+2. Validacion de datos fuente
+3. Extraccion de datos a CSV
+4. ETL principal con Spark
+5. Analisis paralelos (tendencias, horarios, crecimiento, indexacion)
+6. Validacion de calidad del DW
+7. Notificaciones de exito/fallo
+
+**Schedule**: Diario a las 2 AM (`0 2 * * *`)
 
 ---
 
@@ -196,25 +265,38 @@ Para acceder a la interfaz web de Airflow:
 
 ### Relaciones
 
-| Relacion     | Origen      | Destino      | Descripcion                           |
-|--------------|-------------|--------------|---------------------------------------|
-| HIZO_PEDIDO  | Usuario     | Pedido       | El usuario realizo el pedido          |
-| PEDIDO_EN    | Pedido      | Restaurante  | El pedido fue hecho en el restaurante |
-| CONTIENE     | Pedido      | Producto     | El pedido incluye el producto         |
-| HIZO_RESERVA | Usuario     | Reserva      | El usuario realizo la reserva         |
-| RESERVA_EN   | Reserva     | Restaurante  | La reserva es en el restaurante       |
-| CERCA_DE     | Entidad     | Calle        | Anclaje al nodo vial mas cercano      |
-| ROAD         | Calle       | Calle        | Segmento vial (peso = distancia m)    |
+| Relacion         | Origen       | Destino      | Propiedades                           | Descripcion                           |
+|------------------|--------------|--------------|---------------------------------------|---------------------------------------|
+| REALIZO          | Usuario      | Pedido       | --                                    | El usuario realizo el pedido          |
+| EN_RESTAURANTE   | Pedido       | Restaurante  | --                                    | El pedido fue hecho en el restaurante |
+| INCLUYE          | Pedido       | Producto     | --                                    | El pedido incluye el producto         |
+| INCLUYE_DETALLE  | Pedido       | Producto     | cantidad, precio_unitario, subtotal   | Detalle del producto en el pedido     |
+| RESERVO          | Usuario      | Restaurante  | --                                    | El usuario realizo una reserva        |
+| CERCA_DE         | Restaurante  | Calle        | distancia: 0                          | Anclaje al nodo vial mas cercano      |
+| ROAD             | Calle        | Calle        | distancia (metros)                    | Segmento vial con peso en metros      |
 
 ### Consultas de ejemplo
 
 ```cypher
--- Ruta mas corta entre un cliente y un restaurante
-MATCH (u:Usuario {id: 3})-[:CERCA_DE]->(inicio:Calle),
-      (r:Restaurante {id: 1})-[:CERCA_DE]->(fin:Calle)
+-- Ruta mas corta entre un restaurante y otro usando Dijkstra
+MATCH (r1:Restaurante {id: 1})-[:CERCA_DE]->(inicio:Calle),
+      (r2:Restaurante {id: 2})-[:CERCA_DE]->(fin:Calle)
 CALL apoc.algo.dijkstra(inicio, fin, 'ROAD', 'distancia')
 YIELD path, weight
-RETURN path, weight AS distancia_metros
+RETURN path, weight AS distancia_metros;
+
+-- Productos mas pedidos juntos (co-compras)
+MATCH (p1:Producto)<-[:INCLUYE_DETALLE]-(pedido:Pedido)-[:INCLUYE_DETALLE]->(p2:Producto)
+WHERE p1.id < p2.id
+RETURN p1.titulo, p2.titulo, COUNT(*) AS veces_juntos
+ORDER BY veces_juntos DESC
+LIMIT 10;
+
+-- Clientes con mas pedidos realizados
+MATCH (u:Usuario)-[r:REALIZO]->(p:Pedido)
+RETURN u.email, COUNT(p) AS total_pedidos, SUM(p.total) AS gasto_total
+ORDER BY total_pedidos DESC
+LIMIT 10;
 ```
 
 ---
